@@ -57,6 +57,10 @@
   text-shadow: 0 4px 32px rgba(0, 0, 0, 0.65);
 }
 
+.hero-constellation__title-dot {
+  color: var(--color-primary);
+}
+
 .hero-constellation__role {
   margin: 0.4rem 0 0;
   font-size: clamp(1.9rem, 5.5vw, 3.4rem);
@@ -106,18 +110,6 @@
   .hero-constellation__stack {
     margin-top: var(--space-4);
   }
-}
-
-/* CTA doré plein, distinct du bouton "primary" partagé (fond sombre ailleurs) */
-.hero-constellation__cta {
-  background: linear-gradient(180deg, #f0d06a 0%, #c9a227 100%);
-  color: #120d02;
-  border-color: #e8c45a;
-  box-shadow: 0 6px 18px rgba(201, 162, 39, 0.28);
-}
-.hero-constellation__cta:hover {
-  background: linear-gradient(180deg, #f3d879 0%, #d9af2e 100%);
-  box-shadow: 0 10px 24px rgba(201, 162, 39, 0.4);
 }
 
 /* ---------- stack : simple rangée d'icônes, sans cadre ni défilement ---------- */

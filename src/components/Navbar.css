@@ -48,7 +48,7 @@
 .navbar__logo-bracket {
   font-family: var(--font-mono);
   font-weight: 600;
-  color: var(--color-ink-soft);
+  color: var(--color-primary);
 }
 
 .navbar__burger {

@@ -100,14 +100,15 @@ function HeroConstellation() {
 
       <div className="container hero-constellation__inner">
         <div className="hero-constellation__text">
-          <h1 className="hero-constellation__title">Marc.</h1>
+          <h1 className="hero-constellation__title">
+            Marc<span className="hero-constellation__title-dot">.</span>
+          </h1>
           <p className="hero-constellation__role">Développeur front-end React</p>
           <p className="hero-constellation__tagline">
-            Je me forme avec une approche full-stack. Mon objectif : des interfaces
-            claires, accessibles et performantes, du prototype au déploiement.
+          Développeur web orienté front-end, avec des bases solides en back-end qui me permettent de mener un projet du prototype à la mise en ligne. Mon objectif : des interfaces claires, accessibles et performantes.
           </p>
           <div className="hero-constellation__actions">
-            <Button href="#contact" variant="primary" className="hero-constellation__cta">
+            <Button href="#contact" variant="gold">
               Me contacter
             </Button>
             <Button href="https://github.com/peromarc83-pixel" variant="ghost">
