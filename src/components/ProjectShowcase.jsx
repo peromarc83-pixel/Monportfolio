@@ -34,7 +34,28 @@ function ProjectShowcase({ projects }) {
 
           <div className="project-card__body">
             <h3 className="project-card__title">{project.title}</h3>
-            <p className="project-card__subtitle">{project.subtitle}</p>
+            <p className="project-card__summary">{project.summary}</p>
+
+            <div className="project-card__tech">
+              {project.stack?.length > 0 && (
+                <ul className="project-card__stack">
+                  {project.stack.map((tech) => (
+                    <li key={tech}>{tech}</li>
+                  ))}
+                </ul>
+              )}
+
+              {project.metrics?.length > 0 && (
+                <ul className="project-card__metrics">
+                  {project.metrics.map((metric) => (
+                    <li key={metric.label}>
+                      <b>{metric.value}</b>
+                      <span>{metric.label}</span>
+                    </li>
+                  ))}
+                </ul>
+              )}
+            </div>
 
             {(project.links?.demo || project.links?.code) && (
               <div className="project-card__links">

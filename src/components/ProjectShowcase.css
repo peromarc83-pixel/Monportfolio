@@ -5,7 +5,7 @@
   padding: 0;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: var(--space-4);
+  gap: clamp(1.5rem, 4vw, 3rem);
 }
 
 @media (max-width: 900px) {
@@ -26,7 +26,8 @@
 .project-card__shot {
   display: block;
   width: 100%;
-  aspect-ratio: 16 / 9;
+  /* ratio réel des captures (1600 × 667) : l'image entière est visible, sans recadrage */
+  aspect-ratio: 1600 / 667;
   object-fit: cover;
   object-position: top center;
   border-bottom: 1px solid var(--color-line);
@@ -57,12 +58,74 @@
   font-size: 1.05rem;
 }
 
-.project-card__subtitle {
+/* résumé : contenu et objet du site + méthode de la mission */
+.project-card__summary {
   margin: 0;
-  font-size: 0.88rem;
+  font-size: 0.92rem;
+  line-height: 1.6;
   color: var(--color-ink-soft);
-  /* pousse les boutons en bas pour aligner toutes les cartes */
+  /* pousse le bloc technique et les boutons en bas pour aligner toutes les cartes */
   flex: 1;
+}
+
+/* données techniques : stack + métriques Lighthouse, sans contour */
+.project-card__tech {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  padding-top: var(--space-2);
+}
+
+.project-card__stack {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.1rem 0.4rem;
+}
+
+.project-card__stack li {
+  font-family: var(--font-mono);
+  font-size: 0.6rem;
+  letter-spacing: 0.02em;
+  white-space: nowrap;
+  color: var(--color-primary);
+}
+
+.project-card__stack li:not(:last-child)::after {
+  content: ' ·';
+  margin-left: 0.4rem;
+  color: var(--color-ink-soft);
+}
+
+.project-card__metrics {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  gap: var(--space-6);
+}
+
+.project-card__metrics li {
+  display: flex;
+  align-items: baseline;
+  gap: 0.35rem;
+}
+
+.project-card__metrics b {
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  color: var(--color-success);
+  font-variant-numeric: tabular-nums;
+}
+
+.project-card__metrics span {
+  font-family: var(--font-mono);
+  font-size: 0.56rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--color-ink-soft);
 }
 
 .project-card__links {
@@ -77,14 +140,16 @@
   font-size: 0.82rem;
 }
 
-/* écran bas : capture moins haute et corps de carte resserré */
+/* écran bas : corps de carte resserré + résumé compacté, pour que la section
+   tienne dans une hauteur d'écran sans scroll interne (cf. .section) */
 @media (max-height: 800px) {
-  .project-card__shot {
-    aspect-ratio: 21 / 9;
-  }
-
   .project-card__body {
     gap: var(--space-2);
     padding: var(--space-3);
+  }
+
+  .project-card__summary {
+    font-size: 0.82rem;
+    line-height: 1.45;
   }
 }

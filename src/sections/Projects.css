@@ -10,6 +10,6 @@
 
 @media (min-width: 1024px) {
   .projects .container {
-    max-width: 1320px;
+    max-width: min(96vw, 1560px);
   }
 }

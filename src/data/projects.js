@@ -2,39 +2,18 @@ export const projects = [
   {
     id: "cordees",
     title: "Les Cordées du Leadership",
-    subtitle:
-      "Site vitrine client réel — de la conception au déploiement sécurisé",
-    tags: ["client réel", "SEO"],
-    stack: ["React", "Vite", "SCSS", "Netlify", "OVH", "Node"],
-    highlights: [
-      "Identité visuelle définie sur mesure (photos, palette or/charbon, Cormorant + Barlow)",
-      "Déploiement Netlify + DNS OVH, HTTPS",
-      "Durcissement sécurité (headers, Semgrep, OWASP ZAP, Gitleaks)",
-      "Conformité RGPD/CNIL, formulaire serverless self-hosted",
-    ],
+    summary:
+      "Site vitrine de Nicolas Stoeckel, coach qui accompagne des dirigeants en petit groupe pour clarifier leurs décisions stratégiques et renforcer leur leadership. Projet client mené de bout en bout : refonte d'une page HTML statique en application React/Vite, déploiement sur Netlify avec domaine dédié, sécurisation du site et mise en conformité RGPD.",
+    stack: ["React", "Vite", "SCSS", "Node", "Netlify", "OVH"],
     image: "/images/cordees.webp",
     links: { demo: "https://lescordees.pro", code: "" },
   },
   {
     id: "argentbank",
     title: "ArgentBank",
-    subtitle: "Application bancaire full-stack React / Redux",
-    tags: ["full-stack"],
-    stack: [
-      "React",
-      "Redux Toolkit",
-      "React Router",
-      "Node",
-      "Express",
-      "MongoDB",
-      "JWT",
-      "Swagger",
-    ],
-    highlights: [
-      "Authentification JWT + routes protégées (PrivateRoute)",
-      "Store Redux centralisé (slice auth)",
-      "Phase 2 : API transactions documentée en Swagger/OpenAPI",
-    ],
+    summary:
+      "Application web bancaire avec espace client sécurisé : connexion, consultation des comptes et édition du profil. Développée en React et Redux Toolkit, avec authentification par token JWT. Conception et documentation de l'API des transactions en Swagger.",
+    stack: ["React", "Redux Toolkit", "React Router", "Express", "MongoDB", "JWT"],
     image: "/images/argentbank.webp",
     links: {
       demo: "https://argentbank-frontend.netlify.app/",
@@ -44,14 +23,13 @@ export const projects = [
   {
     id: "nina-carducci",
     title: "Nina Carducci",
-    subtitle: "Optimisation SEO, accessibilité & performance",
-    tags: ["SEO"],
-    stack: ["HTML", "CSS", "JavaScript", "Schema.org", "WebP", "Lighthouse"],
-    metrics: { performance: 99, accessibilite: "67 → 100", seo: "73 → 100" },
-    highlights: [
-      "Images ~29 Mo → WebP + redimensionnement",
-      "Données structurées JSON-LD (LocalBusiness), Open Graph",
-      "Débogage de la galerie JS",
+    summary:
+      "Site vitrine d'une photographe — portraits, mariages, concerts. Mission : optimiser un site existant sans en modifier le design. Audit puis corrections du référencement (SEO), de l'accessibilité (normes WCAG) et de la performance (Lighthouse), avec débogage du code JavaScript.",
+    stack: ["JavaScript", "Schema.org", "WebP", "Lighthouse"],
+    metrics: [
+      { value: "99", label: "Perf" },
+      { value: "67→100", label: "A11y" },
+      { value: "73→100", label: "SEO" },
     ],
     image: "/images/nina-carducci.webp",
     links: {
