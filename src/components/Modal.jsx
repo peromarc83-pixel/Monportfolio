@@ -5,7 +5,7 @@ import './Modal.css'
 const FOCUSABLE_SELECTOR =
   'a[href], button:not([disabled]), textarea:not([disabled]), input:not([disabled]), select:not([disabled]), [tabindex]:not([tabindex="-1"])'
 
-function Modal({ title, onClose, children }) {
+function Modal({ title, onClose, action, children }) {
   const dialogRef = useRef(null)
 
   useEffect(() => {
@@ -62,14 +62,17 @@ function Modal({ title, onClose, children }) {
       >
         <div className="modal__header">
           <h3 className="modal__title">{title}</h3>
-          <button
-            type="button"
-            className="modal__close"
-            onClick={onClose}
-            aria-label="Fermer"
-          >
-            <X aria-hidden="true" size={20} />
-          </button>
+          <div className="modal__header-tools">
+            {action}
+            <button
+              type="button"
+              className="modal__close"
+              onClick={onClose}
+              aria-label="Fermer"
+            >
+              <X aria-hidden="true" size={20} />
+            </button>
+          </div>
         </div>
         <div className="modal__body">{children}</div>
       </div>

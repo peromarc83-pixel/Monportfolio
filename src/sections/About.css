@@ -27,29 +27,50 @@
   gap: var(--space-6);
 }
 
-/* cadre en attente de la photo : mêmes tons que les jetons du site
-   (bille du logo, sphères de compétences) */
-.about__photo {
+/* photo + signature, empilées et centrées ; largeur calée sur la photo */
+.about__portrait {
   align-self: center;
   width: 100%;
-  max-width: 200px;
-  aspect-ratio: 1 / 1;
+  max-width: 220px;
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
-  gap: var(--space-2);
-  border: 1px dashed var(--color-line);
-  border-radius: 50%;
-  background: var(--gradient-badge);
-  color: var(--color-ink-soft);
+  gap: var(--space-6);
 }
 
-.about__photo-hint {
-  font-family: var(--font-mono);
-  font-size: 0.75rem;
-  letter-spacing: 0.02em;
-  margin-top: var(--space-1);
+/* portrait : fond redessiné aux tons du site (quasi-noir + halo doré),
+   cadre rond cerné d'un liseré or */
+.about__photo {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  overflow: hidden;
+  border: 3px solid var(--color-primary);
+  border-radius: 50%;
+  background: var(--color-bg);
+  box-shadow:
+    0 0 0 1px rgba(232, 196, 90, 0.25),
+    var(--shadow-card);
+}
+
+/* signature manuscrite, or, centrée sous la photo et légèrement descendue
+   pour ne pas toucher le liseré */
+.about__signature {
+  margin: var(--space-2) 0 0;
+  font-family: var(--font-script);
+  font-weight: 400;
+  font-size: 2.4rem;
+  line-height: 1;
+  color: var(--color-primary);
+  transform: rotate(-6deg);
+  transform-origin: center;
+}
+
+.about__photo img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: 50% 38%;
 }
 
 .about__content {
@@ -62,26 +83,25 @@
   display: flex;
   flex-direction: column;
   gap: var(--space-4);
-  max-width: 62ch;
+  max-width: 68rem;
 }
 
 /* au-delà de 900px : cadre photo à côté du texte */
 @media (min-width: 900px) {
   .about .container {
-    max-width: 960px;
+    max-width: min(96vw, 1340px);
   }
 
   .about__layout {
     flex-direction: row;
-    align-items: flex-start;
-    gap: var(--space-8);
+    align-items: center;
+    gap: clamp(2.5rem, 5vw, 4.5rem);
   }
 
-  .about__photo {
+  .about__portrait {
     flex: none;
     align-self: auto;
-    width: 220px;
-    max-width: none;
+    max-width: 260px;
   }
 
   .about__content {
@@ -91,8 +111,16 @@
 }
 
 .about__body p {
-  font-size: 1.15rem;
-  line-height: 1.75;
+  font-size: 1.2rem;
+  line-height: 1.7;
+}
+
+/* mobile : pas de largeur à occuper, on revient à une taille de lecture standard */
+@media (max-width: 640px) {
+  .about__body p {
+    font-size: 1.1rem;
+    line-height: 1.65;
+  }
 }
 
 @media (max-height: 800px) {
@@ -110,7 +138,7 @@
   }
 
   .about__body p {
-    font-size: 1rem;
+    font-size: 1.05rem;
     line-height: 1.55;
   }
 }
@@ -123,14 +151,4 @@
   display: flex;
   flex-wrap: wrap;
   gap: var(--space-3);
-}
-
-/* « Consulter mon CV » : bouton plein noir profond, distinct du bouton
-   transparent « Télécharger » à côté */
-.about__actions .about__cv-view {
-  background: #0b0b0e;
-}
-
-.about__actions .about__cv-view:hover {
-  background: #14141a;
 }

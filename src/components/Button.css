@@ -48,3 +48,22 @@
   border-color: var(--color-primary);
   color: var(--color-primary);
 }
+
+/* CTA doré plein : le point chaud d'une section (Hero, « À propos »…) */
+.btn--gold {
+  background: linear-gradient(180deg, #f0d06a 0%, #c9a227 100%);
+  color: #120d02;
+  border-color: #e8c45a;
+  box-shadow: 0 6px 18px rgba(201, 162, 39, 0.28);
+}
+
+.btn--gold:hover {
+  background: linear-gradient(180deg, #f3d879 0%, #d9af2e 100%);
+  box-shadow: 0 10px 24px rgba(201, 162, 39, 0.4);
+}
+
+/* modificateur compact (barre d'outils, en-tête de modale) */
+.btn--sm {
+  padding: var(--space-2) var(--space-4);
+  font-size: 0.85rem;
+}
