@@ -20,3 +20,9 @@
 .section-title__subtitle {
   font-size: 1.05rem;
 }
+
+@media (max-height: 800px) {
+  .section-title {
+    margin-bottom: var(--space-4);
+  }
+}

@@ -1,35 +1,122 @@
+/* fond noir profond avec un très léger écho du dégradé du Hero, texte seul */
+.about {
+  background:
+    radial-gradient(950px 650px at 10% -10%, rgba(232, 196, 90, 0.13), transparent 55%),
+    radial-gradient(800px 600px at 92% 108%, rgba(201, 162, 39, 0.1), transparent 55%),
+    linear-gradient(155deg, rgba(232, 196, 90, 0.045) 0%, transparent 35%, transparent 65%, rgba(201, 162, 39, 0.035) 100%),
+    #050506;
+}
+
+/* colonne de lecture centrée, comme le Hero */
 .about__inner {
+  max-width: 720px;
+  margin-inline: auto;
   display: flex;
   flex-direction: column;
   gap: var(--space-6);
 }
 
-/* en-tête compact : badge + titre alignés, façon en-tête de profil */
-.about__header {
-  display: flex;
-  align-items: center;
-  gap: var(--space-4);
-}
-
-.about__header .about__badge {
-  --badge-size: 64px;
-}
-
-.about__header .section-title {
+.about__inner .section-title {
   margin-bottom: 0;
-  max-width: none;
+}
+
+/* mobile : cadre photo au-dessus du texte */
+.about__layout {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-6);
+}
+
+/* cadre en attente de la photo : mêmes tons que les jetons du site
+   (bille du logo, sphères de compétences) */
+.about__photo {
+  align-self: center;
+  width: 100%;
+  max-width: 200px;
+  aspect-ratio: 1 / 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-2);
+  border: 1px dashed var(--color-line);
+  border-radius: 50%;
+  background: var(--gradient-badge);
+  color: var(--color-ink-soft);
+}
+
+.about__photo-hint {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  letter-spacing: 0.02em;
+  margin-top: var(--space-1);
+}
+
+.about__content {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-6);
 }
 
 .about__body {
   display: flex;
   flex-direction: column;
   gap: var(--space-4);
-  border-top: 1px solid var(--color-line);
-  padding-top: var(--space-6);
+  max-width: 62ch;
+}
+
+/* au-delà de 900px : cadre photo à côté du texte */
+@media (min-width: 900px) {
+  .about .container {
+    max-width: 960px;
+  }
+
+  .about__layout {
+    flex-direction: row;
+    align-items: flex-start;
+    gap: var(--space-8);
+  }
+
+  .about__photo {
+    flex: none;
+    align-self: auto;
+    width: 220px;
+    max-width: none;
+  }
+
+  .about__content {
+    flex: 1;
+    min-width: 0;
+  }
 }
 
 .about__body p {
-  max-width: 640px;
+  font-size: 1.15rem;
+  line-height: 1.75;
+}
+
+@media (max-height: 800px) {
+  .about__inner {
+    gap: var(--space-4);
+  }
+
+  .about__layout,
+  .about__content {
+    gap: var(--space-4);
+  }
+
+  .about__body {
+    gap: var(--space-2);
+  }
+
+  .about__body p {
+    font-size: 1rem;
+    line-height: 1.55;
+  }
+}
+
+.about__inner .section-title__title {
+  font-size: clamp(2.1rem, 4.5vw, 3.1rem);
 }
 
 .about__actions {
@@ -38,8 +125,12 @@
   gap: var(--space-3);
 }
 
-@media (min-width: 1024px) {
-  .about__header .about__badge {
-    --badge-size: 92px;
-  }
+/* « Consulter mon CV » : bouton plein noir profond, distinct du bouton
+   transparent « Télécharger » à côté */
+.about__actions .about__cv-view {
+  background: #0b0b0e;
+}
+
+.about__actions .about__cv-view:hover {
+  background: #14141a;
 }

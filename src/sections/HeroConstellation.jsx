@@ -4,10 +4,8 @@ import Button from '@/components/Button.jsx'
 import './HeroConstellation.css'
 
 /**
- * Variante du Hero pour le thème « constellation » : la stack technique
- * orbite, reliée par des traces dorées, autour d'un jeton central portant
- * la signature du site. Positions calculées, pas de valeurs codées en dur
- * pour ajouter/retirer une techno (cf. TECHS ci-dessous).
+ * Hero du site. La stack technique est affichée en une simple rangée d'icônes
+ * sous le contenu. Pour ajouter/retirer une techno : cf. TECHS.
  */
 
 const IconReact = () => (
@@ -89,14 +87,7 @@ const TECHS = [
   { name: 'HTML5', Icon: IconHTML },
 ]
 
-const RADIUS = 37 // % du conteneur
-
 function HeroConstellation() {
-  const nodes = TECHS.map((tech, index) => {
-    const angle = ((-90 + index * (360 / TECHS.length)) * Math.PI) / 180
-    return { ...tech, x: 50 + RADIUS * Math.cos(angle), y: 50 + RADIUS * Math.sin(angle) }
-  })
-
   return (
     <section id="accueil" className="hero-constellation section">
       <img
@@ -109,8 +100,7 @@ function HeroConstellation() {
 
       <div className="container hero-constellation__inner">
         <div className="hero-constellation__text">
-          <p className="hero-constellation__hello">Hello !</p>
-          <h1 className="hero-constellation__title">Bonjour, je suis Marc.</h1>
+          <h1 className="hero-constellation__title">Marc.</h1>
           <p className="hero-constellation__role">Développeur front-end React</p>
           <p className="hero-constellation__tagline">
             Je me forme avec une approche full-stack. Mon objectif : des interfaces
@@ -129,64 +119,20 @@ function HeroConstellation() {
               Mon CV
             </Button>
           </div>
-        </div>
 
-        <div className="hero-constellation__orbit">
-          <div className="constellation">
-            <div className="constellation__ring" aria-hidden="true"></div>
-            <svg className="constellation__wires" viewBox="0 0 100 100" aria-hidden="true">
-              <defs>
-                <radialGradient id="hc-glow" cx="50%" cy="50%" r="50%">
-                  <stop offset="0%" stopColor="#e8c45a" stopOpacity="0.35" />
-                  <stop offset="100%" stopColor="#e8c45a" stopOpacity="0" />
-                </radialGradient>
-              </defs>
-              <circle cx="50" cy="50" r="30" fill="url(#hc-glow)" />
-              {nodes.map((node, index) => (
-                <g key={node.name}>
-                  <line x1="50" y1="50" x2={node.x} y2={node.y} className="constellation__trace" />
-                  <line
-                    x1="50"
-                    y1="50"
-                    x2={node.x}
-                    y2={node.y}
-                    className="constellation__pulse"
-                    pathLength="100"
-                    style={{ animationDelay: `${index * -0.34}s` }}
-                  />
-                  <circle cx={node.x} cy={node.y} r="1" className="constellation__endpoint" />
-                </g>
-              ))}
-            </svg>
+          <p className="sr-only">
+            Stack&nbsp;: {TECHS.map((tech) => tech.name).join(', ')}.
+          </p>
 
-            <div className="constellation__chip">
-              <span>MarcDev</span>
-            </div>
-
-            {nodes.map((node) => (
-              <div
-                key={node.name}
-                className="constellation__coin"
-                style={{ left: `${node.x}%`, top: `${node.y}%` }}
-                title={node.name}
-              >
-                <div className="constellation__coin-inner">
-                  <node.Icon />
-                </div>
-              </div>
+          <div className="hero-constellation__stack" aria-hidden="true">
+            {TECHS.map((tech) => (
+              <span className="hero-constellation__icon" key={tech.name} title={tech.name}>
+                <tech.Icon />
+              </span>
             ))}
           </div>
         </div>
       </div>
-
-      <a
-        className="hero-constellation__credit"
-        href="https://unsplash.com/@brechtcorbeel"
-        target="_blank"
-        rel="noopener noreferrer"
-      >
-        Photo : Brecht Corbeel · Unsplash
-      </a>
     </section>
   )
 }

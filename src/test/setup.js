@@ -10,7 +10,7 @@ afterEach(() => {
   cleanup()
 })
 
-// jsdom n'implémente pas matchMedia (utilisé par SkillsUniverse)
+// jsdom n'implémente pas matchMedia
 if (!window.matchMedia) {
   window.matchMedia = (query) => ({
     matches: false,

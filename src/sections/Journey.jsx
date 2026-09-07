@@ -28,10 +28,15 @@ const STEPS = [
 
 function Journey() {
   return (
-    <section id="parcours" className="journey section section--wash">
+    <section id="parcours" className="journey section">
       <div className="container">
         <SectionTitle eyebrow="Parcours" title="Mon chemin jusqu'ici" id="parcours-title" />
-        <div className="journey__panel">
+        <div className="journey__rail">
+          <div className="journey__dots" aria-hidden="true">
+            {STEPS.map((step) => (
+              <span key={step.title} className="journey__dot" style={{ '--dot': step.color }} />
+            ))}
+          </div>
           <ol className="journey__list">
             {STEPS.map((step, index) => (
               <TimelineItem

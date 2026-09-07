@@ -8,7 +8,7 @@ function Skills() {
       <div className="container">
         <SectionTitle
           eyebrow="Compétences"
-          title="Univers de compétences"
+          title="De l'interface au déploiement"
           subtitle="Surtout du front-end React, avec des bases côté back-end, et le souci de l'accessibilité, de la performance et de la sécurité."
           id="competences-title"
         />

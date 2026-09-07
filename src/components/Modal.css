@@ -6,12 +6,8 @@
   align-items: center;
   justify-content: center;
   padding: var(--space-4);
-  background: rgba(11, 33, 53, 0.75);
-  backdrop-filter: blur(3px);
-}
-
-:root[data-theme='constellation'] .modal-overlay {
   background: rgba(8, 8, 10, 0.75);
+  backdrop-filter: blur(3px);
 }
 
 .modal {

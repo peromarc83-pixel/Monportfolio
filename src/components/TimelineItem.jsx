@@ -7,8 +7,8 @@ function TimelineItem({ version, year, title, description, color, isLast = false
         <span className="timeline-item__version" style={{ '--hue': color }}>
           {version}
         </span>
-        {isLast && <span className="timeline-item__badge">En cours</span>}
         <span className="timeline-item__year">{year}</span>
+        {isLast && <span className="timeline-item__badge">En cours</span>}
       </div>
       <h3 className="timeline-item__title">{title}</h3>
       <p className="timeline-item__description">{description}</p>

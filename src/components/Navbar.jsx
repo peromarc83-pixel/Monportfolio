@@ -1,7 +1,5 @@
 import { useEffect, useRef, useState } from 'react'
-import { Menu, Sparkles, X } from 'lucide-react'
-import Logo from './Logo.jsx'
-import { THEMES } from '@/hooks/useTheme.js'
+import { Menu, X } from 'lucide-react'
 import './Navbar.css'
 
 const LINKS = [
@@ -13,7 +11,7 @@ const LINKS = [
   { href: '#contact', label: 'Contact' },
 ]
 
-function Navbar({ theme, onToggleTheme }) {
+function Navbar() {
   const [isOpen, setIsOpen] = useState(false)
   const [activeId, setActiveId] = useState('accueil')
   const observerRef = useRef(null)
@@ -47,8 +45,11 @@ function Navbar({ theme, onToggleTheme }) {
   return (
     <header className="navbar">
       <nav className="navbar__inner container" aria-label="Navigation principale">
-        <a href="#accueil" className="navbar__logo">
-          <Logo />
+        <a href="#accueil" className="navbar__logo" aria-label="Marc — retour à l'accueil">
+          <span className="navbar__logo-bracket" aria-hidden="true">&lt;</span>
+          <span className="navbar__logo-name">Marc</span>
+          <span className="navbar__logo-bracket" aria-hidden="true">/</span>
+          <span className="navbar__logo-bracket" aria-hidden="true">&gt;</span>
         </a>
 
         <ul
@@ -63,37 +64,22 @@ function Navbar({ theme, onToggleTheme }) {
                 aria-current={activeId === link.href.slice(1) ? 'true' : undefined}
                 onClick={closeMenu}
               >
-                {link.label}
+                <span className="navbar__link-prefix" aria-hidden="true">//</span> {link.label}
               </a>
             </li>
           ))}
         </ul>
 
-        <div className="navbar__actions">
-          <button
-            type="button"
-            className="navbar__theme-toggle"
-            aria-pressed={theme === THEMES.CONSTELLATION}
-            onClick={onToggleTheme}
-            title="Changer de thème"
-          >
-            <Sparkles aria-hidden="true" size={16} />
-            <span className="navbar__theme-toggle-label">
-              {theme === THEMES.CONSTELLATION ? 'Constellation' : 'Thème'}
-            </span>
-          </button>
-
-          <button
-            type="button"
-            className="navbar__burger"
-            aria-expanded={isOpen}
-            aria-controls="navbar-menu"
-            aria-label={isOpen ? 'Fermer le menu' : 'Ouvrir le menu'}
-            onClick={() => setIsOpen((prev) => !prev)}
-          >
-            {isOpen ? <X aria-hidden="true" /> : <Menu aria-hidden="true" />}
-          </button>
-        </div>
+        <button
+          type="button"
+          className="navbar__burger"
+          aria-expanded={isOpen}
+          aria-controls="navbar-menu"
+          aria-label={isOpen ? 'Fermer le menu' : 'Ouvrir le menu'}
+          onClick={() => setIsOpen((prev) => !prev)}
+        >
+          {isOpen ? <X aria-hidden="true" /> : <Menu aria-hidden="true" />}
+        </button>
       </nav>
     </header>
   )

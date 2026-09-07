@@ -1,3 +1,12 @@
+/* fond dégradé doré (identique aux autres sections) */
+.contact {
+  background:
+    radial-gradient(950px 650px at 10% -10%, rgba(232, 196, 90, 0.13), transparent 55%),
+    radial-gradient(800px 600px at 92% 108%, rgba(201, 162, 39, 0.1), transparent 55%),
+    linear-gradient(155deg, rgba(232, 196, 90, 0.045) 0%, transparent 35%, transparent 65%, rgba(201, 162, 39, 0.035) 100%),
+    #050506;
+}
+
 .contact__inner {
   display: grid;
   grid-template-columns: 1fr;
@@ -9,6 +18,27 @@
   flex-direction: column;
   gap: var(--space-3);
   margin-top: var(--space-6);
+}
+
+@media (max-height: 800px) {
+  .contact__socials {
+    margin-top: var(--space-3);
+    gap: var(--space-2);
+  }
+
+  .contact__form {
+    gap: var(--space-2);
+  }
+
+  .contact__field input,
+  .contact__field textarea {
+    padding: var(--space-2);
+  }
+
+  .contact__consent {
+    font-size: 0.72rem;
+    line-height: 1.3;
+  }
 }
 
 .contact__socials a {
@@ -23,47 +53,27 @@
   text-decoration: underline;
 }
 
-/* Liens de contact encadrés : e-mail, GitHub (noir), LinkedIn (bleu) — même gabarit */
+/* Liens de contact encadrés (e-mail, GitHub, LinkedIn) : même gabarit et même
+   charte que le reste du site — surface teintée + liseré doré. */
 .contact__socials a.contact__email,
 .contact__socials a.contact__social {
   align-self: flex-start;
   width: 15rem;
   padding: var(--space-2) var(--space-4);
-  border: 1px solid transparent;
+  border: 1px solid var(--color-line);
   border-radius: var(--radius-btn);
+  background: var(--surface-tint);
+  color: var(--color-ink);
   transition:
     transform 0.15s ease,
-    filter 0.15s ease;
+    border-color 0.15s ease;
 }
 
 .contact__socials a.contact__email:hover,
-.contact__social:hover {
+.contact__socials a.contact__social:hover {
   text-decoration: none;
   transform: translateY(-1px);
-}
-
-.contact__social:hover {
-  filter: brightness(1.1);
-}
-
-/* E-mail, GitHub, LinkedIn : libellés en blanc */
-.contact__socials a.contact__email,
-.contact__socials a.contact__social {
-  color: #fff;
-}
-
-.contact__social--github {
-  background: #181717;
-}
-
-.contact__social--linkedin {
-  background: #0a66c2;
-}
-
-/* Adresse e-mail : même fond que les libellés Front-end / Back-end */
-.contact__socials a.contact__email {
-  background: var(--surface-tint);
-  border-color: var(--color-line);
+  border-color: var(--color-primary);
 }
 
 .contact__form {

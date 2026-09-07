@@ -1,58 +1,39 @@
 :root {
-  /* Couleurs — thème sombre construit à partir du bleu nuit #174161 */
-  --color-ink: #edf1fb; /* texte principal / structure (clair sur fond sombre) */
-  --color-ink-soft: #9fb0d1; /* texte secondaire */
-  --color-primary: #7ec2ee; /* dominante claire : liens, icônes, titres accent, focus */
-  --color-primary-strong: #1f5c86; /* bleu soutenu : fonds pleins, texte sur fond clair */
-  --color-primary-soft: rgba(255, 255, 255, 0.08); /* fond teinté clair (fallback photos, badges) */
-  --color-accent: #e2934f; /* accent chaud 5-10% : CTA secondaires, badges */
-  --color-success: #52d69a; /* validations, scores "au vert" */
+  /* Palette « constellation » : fond quasi noir, texte crème, accents dorés */
+  --color-ink: #f5f3ee; /* texte principal */
+  --color-ink-soft: #b8b6af; /* texte secondaire */
+  --color-primary: #e8c45a; /* dominante dorée : liens, icônes, titres accent, focus */
+  --color-primary-strong: #c9a227; /* doré soutenu : fonds pleins */
+  --color-primary-soft: rgba(232, 196, 90, 0.1); /* fond teinté (fallback photos, badges) */
+  --color-accent: #c9a227; /* accent chaud : CTA secondaires, badges */
+  --color-success: #7ed99b; /* validations, scores "au vert" */
   --color-danger: #ff6b6a; /* erreurs de formulaire */
-  --color-bg: #12314c; /* surface unie de base (champs, aplats) */
-  --color-wash: rgba(255, 255, 255, 0.045); /* voile clair : alterne les sections */
-  --color-line: rgba(255, 255, 255, 0.16); /* bordures, séparateurs */
-  --surface: rgba(255, 255, 255, 0.06); /* fond des puces / champs posés sur le dégradé */
-  --surface-strong: rgba(255, 255, 255, 0.1); /* variante hover/active d'une surface */
+  --color-bg: #0c0b09; /* surface unie de base (champs, aplats) */
+  --color-wash: rgba(232, 196, 90, 0.035); /* voile clair : alterne les sections */
+  --color-line: rgba(232, 196, 90, 0.18); /* bordures, séparateurs */
+  --surface: rgba(255, 255, 255, 0.03); /* fond des puces / champs posés sur le dégradé */
+  --surface-strong: rgba(232, 196, 90, 0.09); /* variante hover/active d'une surface */
   --surface-tint: linear-gradient(
     135deg,
-    rgba(255, 255, 255, 0.08),
-    rgba(255, 255, 255, 0.02)
+    rgba(232, 196, 90, 0.07),
+    rgba(232, 196, 90, 0.01)
   ); /* fond teinté : navbar, footer */
 
-  /* Dégradé de fond de page, construit à partir de #174161 */
+  /* Dégradé de fond de page */
   --gradient-page:
-    radial-gradient(1100px 650px at 12% 4%, rgba(63, 148, 199, 0.3), transparent 55%),
-    radial-gradient(900px 600px at 92% 10%, rgba(45, 125, 171, 0.22), transparent 55%),
-    linear-gradient(180deg, #0b2135 0%, #174161 28%, #1f5c86 50%, #174161 72%, #0b2135 100%);
+    radial-gradient(1100px 650px at 12% 4%, rgba(232, 196, 90, 0.1), transparent 55%),
+    radial-gradient(900px 600px at 92% 10%, rgba(201, 162, 39, 0.08), transparent 55%),
+    linear-gradient(180deg, #08080a 0%, #12100a 28%, #17130a 50%, #12100a 72%, #08080a 100%);
 
-  /* Dégradé des boutons / éléments d'appel à l'action, même famille de bleus */
-  --gradient-cta: linear-gradient(135deg, #174161 0%, #1f5c86 55%, #2d7dab 100%);
-  --gradient-cta-hover: linear-gradient(135deg, #123249 0%, #184a6d 55%, #235e83 100%);
-
-  /* Dégradé du badge <MD> : bille du logo, sphères de compétences, fonds de bouton */
-  --gradient-badge:
-    radial-gradient(circle at 68% 55%, #254669 0%, #1c3a63 35%, #142c52 62%, #0e2439 100%),
-    #0b2135;
-  --gradient-badge-hover:
-    radial-gradient(circle at 68% 55%, #2d5277 0%, #234677 35%, #18325c 62%, #102a42 100%),
-    #102a42;
-  /* même famille de bleus, éclaircie pour rester lisible en dégradé de texte (background-clip: text) */
-  --gradient-badge-line: linear-gradient(
-    120deg,
-    #4f9bd9 0%,
-    #bfe4ff 15%,
-    #4f9bd9 30%,
-    #2d6fae 50%,
-    #4f9bd9 70%,
-    #bfe4ff 85%,
-    #4f9bd9 100%
-  );
+  /* Dégradé "jeton" : bille du logo, sphères de compétences, fonds de bouton plein */
+  --gradient-badge: radial-gradient(circle at 32% 28%, #26241d 0%, #0d0d0f 78%);
+  --gradient-badge-hover: radial-gradient(circle at 32% 28%, #332f24 0%, #131311 78%);
 
   /* Typographie */
   --font-display: 'Space Grotesk', Georgia, sans-serif; /* titres */
   --font-body: 'Inter', system-ui, sans-serif; /* corps */
   --font-mono: 'JetBrains Mono', ui-monospace, monospace; /* code, tags, chiffres */
-  --font-script: 'Great Vibes', cursive; /* signature — thème "constellation" uniquement */
+  --font-script: 'Great Vibes', cursive; /* signature du hero */
 
   /* Rayons */
   --radius-card: 12px;
@@ -69,38 +50,4 @@
 
   /* Ombre */
   --shadow-card: 0 18px 40px rgba(0, 0, 0, 0.35);
-}
-
-/**
- * Thème alternatif "constellation" — fond quasi noir, traces et badges dorés.
- * Rejoue les mêmes jetons que le thème par défaut : tout composant qui utilise
- * déjà var(--color-*) / var(--gradient-*) se reskine sans changement de markup.
- * Les rares fonds codés en dur (Journey, Projects, SkillsUniverse) ont leur
- * propre override, à côté de leur règle d'origine.
- */
-:root[data-theme='constellation'] {
-  --color-ink: #f5f3ee;
-  --color-ink-soft: #b8b6af;
-  --color-primary: #e8c45a;
-  --color-primary-strong: #c9a227;
-  --color-primary-soft: rgba(232, 196, 90, 0.1);
-  --color-accent: #c9a227;
-  --color-success: #7ed99b;
-  --color-bg: #0c0b09;
-  --color-wash: rgba(232, 196, 90, 0.035);
-  --color-line: rgba(232, 196, 90, 0.18);
-  --surface: rgba(255, 255, 255, 0.03);
-  --surface-strong: rgba(232, 196, 90, 0.09);
-  --surface-tint: linear-gradient(135deg, rgba(232, 196, 90, 0.07), rgba(232, 196, 90, 0.01));
-
-  --gradient-page:
-    radial-gradient(1100px 650px at 12% 4%, rgba(232, 196, 90, 0.1), transparent 55%),
-    radial-gradient(900px 600px at 92% 10%, rgba(201, 162, 39, 0.08), transparent 55%),
-    linear-gradient(180deg, #08080a 0%, #12100a 28%, #17130a 50%, #12100a 72%, #08080a 100%);
-
-  /* boutons pleins, badges, pastille active — même principe que le thème par
-     défaut (fond sombre + texte clair, donc pas de souci de contraste), teinté
-     d'un radial doré façon "jeton" plutôt que du bleu nuit d'origine */
-  --gradient-badge: radial-gradient(circle at 32% 28%, #26241d 0%, #0d0d0f 78%);
-  --gradient-badge-hover: radial-gradient(circle at 32% 28%, #332f24 0%, #131311 78%);
 }

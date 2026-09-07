@@ -1,11 +1,10 @@
-import { render, screen, fireEvent } from '@testing-library/react'
+import { render } from '@testing-library/react'
 import { axe } from 'vitest-axe'
-import { describe, expect, it, afterEach } from 'vitest'
+import { describe, expect, it } from 'vitest'
 
 import App from '@/App.jsx'
 import Navbar from '@/components/Navbar.jsx'
 import Footer from '@/components/Footer.jsx'
-import Hero from '@/sections/Hero.jsx'
 import HeroConstellation from '@/sections/HeroConstellation.jsx'
 import About from '@/sections/About.jsx'
 import Skills from '@/sections/Skills.jsx'
@@ -30,7 +29,6 @@ describe('accessibilité', () => {
 
   const sections = [
     ['Navbar', Navbar],
-    ['Hero', Hero],
     ['HeroConstellation', HeroConstellation],
     ['About', About],
     ['Skills', Skills],
@@ -42,24 +40,6 @@ describe('accessibilité', () => {
 
   it.each(sections)('la section %s n\'a aucune violation axe', async (_name, Component) => {
     const { container } = render(<Component />)
-    const results = await axe(container, axeOptions)
-    expect(results).toHaveNoViolations()
-  })
-
-  afterEach(() => {
-    document.documentElement.removeAttribute('data-theme')
-  })
-
-  it('le bouton de thème bascule vers le Hero "constellation" sans violation axe', async () => {
-    const { container } = render(<App />)
-
-    const toggle = screen.getByRole('button', { name: /thème/i })
-    fireEvent.click(toggle)
-
-    expect(document.documentElement.dataset.theme).toBe('constellation')
-    expect(toggle).toHaveAttribute('aria-pressed', 'true')
-    expect(container.querySelector('.hero-constellation')).toBeInTheDocument()
-
     const results = await axe(container, axeOptions)
     expect(results).toHaveNoViolations()
   })

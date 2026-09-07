@@ -16,7 +16,7 @@
   display: flex;
   flex-wrap: wrap;
   align-items: center;
-  gap: var(--space-3);
+  gap: 0.6em;
   margin-bottom: var(--space-1);
 }
 
@@ -41,9 +41,13 @@
 
 .timeline-item__year {
   font-family: var(--font-mono);
-  font-size: 0.75rem;
+  font-size: 0.8rem;
   color: var(--color-ink-soft);
-  margin-left: auto;
+}
+
+.timeline-item__year::before {
+  content: '· ';
+  color: #847f72;
 }
 
 .timeline-item__title {
@@ -53,4 +57,29 @@
 .timeline-item__description {
   font-size: 0.95rem;
   max-width: 580px;
+}
+
+/* rail horizontal : plus de séparateurs, colonne = pleine largeur, typo un cran au-dessus */
+@media (min-width: 1024px) {
+  .timeline-item {
+    padding: 0;
+    border-bottom: none;
+  }
+
+  .timeline-item__version {
+    font-size: 1.15rem;
+  }
+
+  .timeline-item__year {
+    font-size: 0.9rem;
+  }
+
+  .timeline-item__title {
+    font-size: 1.55rem;
+  }
+
+  .timeline-item__description {
+    font-size: 1.02rem;
+    max-width: none;
+  }
 }
