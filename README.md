@@ -3,7 +3,6 @@
 Portfolio personnel : présentation, projets, parcours et formulaire de contact.
 Développeur front-end React en formation full-stack.
 
-🔗 **En ligne :** [marc-dev.fr](https://marc-dev.fr)
 
 ## Stack
 
