@@ -1,7 +1,9 @@
-/* Pages légales — charte « constellation » du portfolio (noir profond, doré). */
+/* Contenu des pages légales — charte « constellation » (noir profond, doré).
+   Tout est scopé sous .page pour pouvoir être chargé sans risque dans l'app
+   React (modale) comme dans les pages HTML statiques en accès direct. Le
+   fond/cadrage propre aux pages statiques vit séparément dans legal-page.css. */
 
-:root {
-  --grad-page: linear-gradient(180deg, #08080a 0%, #12100a 28%, #17130a 50%, #12100a 72%, #08080a 100%);
+.page {
   --surface: rgba(232, 196, 90, 0.055);
   --border: rgba(232, 196, 90, 0.16);
   --border-2: rgba(232, 196, 90, 0.3);
@@ -11,39 +13,7 @@
   --accent: #e8c45a;
 }
 
-* {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-}
-
-body {
-  font-family: 'Inter', system-ui, sans-serif;
-  color: var(--text);
-  line-height: 1.65;
-  background: #08080a;
-  min-height: 100vh;
-  position: relative;
-  padding: clamp(2rem, 6vw, 4rem) 1.25rem 5rem;
-}
-
-body::before {
-  content: '';
-  position: fixed;
-  inset: 0;
-  z-index: -1;
-  background:
-    radial-gradient(60% 45% at 22% 18%, rgba(232, 196, 90, 0.13), transparent 60%),
-    radial-gradient(55% 50% at 82% 82%, rgba(201, 162, 39, 0.09), transparent 62%),
-    var(--grad-page);
-}
-
-.page {
-  max-width: 760px;
-  margin: 0 auto;
-}
-
-.back {
+.page .back {
   display: inline-flex;
   align-items: center;
   gap: 0.4rem;
@@ -54,37 +24,37 @@ body::before {
   text-decoration: none;
   margin-bottom: 2rem;
 }
-.back:hover {
+.page .back:hover {
   text-decoration: underline;
   text-underline-offset: 3px;
 }
 
-header.masthead {
+.page header.masthead {
   padding-bottom: 1.5rem;
   margin-bottom: 2rem;
   border-bottom: 1px solid var(--border-2);
 }
-header.masthead .eyebrow {
+.page header.masthead .eyebrow {
   font-family: 'JetBrains Mono', ui-monospace, monospace;
   font-size: 0.72rem;
   letter-spacing: 0.16em;
   text-transform: uppercase;
   color: var(--accent);
 }
-header.masthead h1 {
+.page header.masthead h1 {
   font-family: 'Space Grotesk', sans-serif;
   font-weight: 600;
   font-size: clamp(1.7rem, 5vw, 2.4rem);
   line-height: 1.1;
   margin: 0.4rem 0 0.3rem;
 }
-header.masthead .updated {
+.page header.masthead .updated {
   font-family: 'JetBrains Mono', ui-monospace, monospace;
   font-size: 0.8rem;
   color: var(--faint);
 }
 
-h2 {
+.page h2 {
   font-family: 'Space Grotesk', sans-serif;
   font-weight: 600;
   font-size: 1.2rem;
@@ -92,40 +62,40 @@ h2 {
   color: var(--text);
 }
 
-p {
+.page p {
   margin: 0.7rem 0;
   color: var(--muted);
 }
 
-a {
+.page a {
   color: var(--accent);
   text-underline-offset: 2px;
 }
 
-dl {
+.page dl {
   display: grid;
   grid-template-columns: max-content 1fr;
   gap: 0.4rem 1.5rem;
   margin: 1rem 0;
 }
-dt {
+.page dt {
   font-weight: 600;
   color: var(--text);
 }
-dd {
+.page dd {
   margin: 0;
   color: var(--muted);
 }
 
-ul {
+.page ul {
   margin: 0.7rem 0 0.7rem 1.2rem;
   color: var(--muted);
 }
-li {
+.page li {
   margin: 0.35rem 0;
 }
 
-.todo {
+.page .todo {
   font-family: 'JetBrains Mono', ui-monospace, monospace;
   font-size: 0.85em;
   color: #f0b27a;
@@ -135,7 +105,7 @@ li {
   padding: 0.05em 0.4em;
 }
 
-.callout {
+.page .callout {
   margin: 1.2rem 0;
   padding: 0.9rem 1.1rem;
   background: var(--surface);
@@ -145,7 +115,7 @@ li {
   font-size: 0.95rem;
 }
 
-footer {
+.page footer {
   margin-top: 3.5rem;
   padding-top: 1.5rem;
   border-top: 1px solid var(--border);
@@ -154,19 +124,19 @@ footer {
   color: var(--faint);
 }
 
-a:focus-visible,
-.back:focus-visible {
+.page a:focus-visible,
+.page .back:focus-visible {
   outline: 2px solid var(--accent);
   outline-offset: 3px;
   border-radius: 3px;
 }
 
 @media (max-width: 520px) {
-  dl {
+  .page dl {
     grid-template-columns: 1fr;
     gap: 0.1rem;
   }
-  dt {
+  .page dt {
     margin-top: 0.7rem;
   }
 }

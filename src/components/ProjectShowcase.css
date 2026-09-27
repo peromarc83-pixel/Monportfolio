@@ -89,7 +89,7 @@
 
 .project-card__stack li {
   font-family: var(--font-mono);
-  font-size: 0.6rem;
+  font-size: 0.75rem;
   letter-spacing: 0.02em;
   white-space: nowrap;
   color: var(--color-primary);
@@ -124,7 +124,7 @@
 
 .project-card__metrics span {
   font-family: var(--font-mono);
-  font-size: 0.56rem;
+  font-size: 0.72rem;
   letter-spacing: 0.06em;
   text-transform: uppercase;
   color: var(--color-ink-soft);

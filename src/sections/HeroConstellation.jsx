@@ -24,6 +24,7 @@ function HeroConstellation() {
         <div className="hero-constellation__text">
           <h1 className="hero-constellation__title">
             Marc<span className="hero-constellation__title-dot">.</span>
+            <span className="sr-only"> — Développeur front-end React, en formation full-stack</span>
           </h1>
           <p className="hero-constellation__role">Développeur front-end React</p>
           <p className="hero-constellation__tagline">

@@ -78,9 +78,9 @@ function Contact() {
           />
           <ul className="contact__socials">
             <li>
-              <a href="mailto:contact@marc-dev.fr" className="contact__email">
+              <a href="mailto:marc.pero.dev@gmail.com" className="contact__email">
                 <Mail aria-hidden="true" size={18} />
-                contact@marc-dev.fr
+                marc.pero.dev@gmail.com
               </a>
             </li>
             <li>
