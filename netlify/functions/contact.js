@@ -120,10 +120,8 @@ export default async (request) => {
 
   const { name, email, message } = body
 
-  // SMTP_USER/CONTACT_TO sont le compte de transport (Gmail), distinct de
-  // l'adresse marc.pero.dev@gmail.com affichée sur le site (mailto:, mentions
-  // légales) : le visiteur ne voit jamais cette adresse d'envoi, seulement le
-  // résultat "message reçu".
+  // SMTP_USER/CONTACT_TO sont le compte Gmail utilisé pour le transport de
+  // l'e-mail (même adresse que celle affichée sur le site).
   const transporter = nodemailer.createTransport({
     host: process.env.SMTP_HOST,
     port: Number(process.env.SMTP_PORT || 587),
