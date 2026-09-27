@@ -1,7 +1,7 @@
 # Portfolio — Marc Pero
 
 Portfolio personnel : présentation, projets, parcours et formulaire de contact.
-Développeur front-end React en formation full-stack.
+Développeur front-end React. 
 
 
 ## Stack
@@ -13,7 +13,7 @@ Développeur front-end React en formation full-stack.
 | Icônes         | lucide-react, react-icons                                    |
 | Contact        | Fonction serverless Netlify + Nodemailer (SMTP OVH)          |
 | Qualité        | Oxlint, Vitest + Testing Library, vitest-axe (accessibilité) |
-| Hébergement    | Netlify (build + CDN), DNS OVH, HTTPS + en-têtes de sécurité |
+| Hébergement    | Netlify (build + CDN), HTTPS + en-têtes de sécurité |
 
 ## Prérequis
 
