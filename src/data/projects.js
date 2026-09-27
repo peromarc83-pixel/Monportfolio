@@ -3,7 +3,7 @@ export const projects = [
     id: "cordees",
     title: "Les Cordées du Leadership",
     summary:
-      "Site vitrine de Nicolas Stoeckel, coach qui accompagne des dirigeants en petit groupe pour clarifier leurs décisions stratégiques et renforcer leur leadership. Projet client mené de bout en bout : refonte d'une page HTML statique en application React/Vite, déploiement sur Netlify avec domaine dédié, sécurisation du site et mise en conformité RGPD.",
+      "Site vitrine de Nicolas Stoeckel, Mentor d'affaires qui aide des dirigeants à gravir les décisions qu'ils ne peuvent plus prendre seuls et à tenir la trajectoire correspondante. Projet client mené de bout en bout : refonte d'une page HTML statique en application React/Vite, déploiement sur Netlify avec domaine dédié, sécurisation du site et mise en conformité RGPD.",
     stack: ["React", "Vite", "SCSS", "Node", "Netlify", "OVH"],
     image: "/images/cordees.webp",
     links: { demo: "https://lescordees.pro", code: "" },

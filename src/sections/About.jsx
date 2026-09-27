@@ -1,13 +1,7 @@
-import { useState } from 'react'
-import { FileDown, FileText } from 'lucide-react'
-import Button from '@/components/Button.jsx'
-import Modal from '@/components/Modal.jsx'
 import SectionTitle from '@/components/SectionTitle.jsx'
 import './About.css'
 
 function About() {
-  const [isCvOpen, setIsCvOpen] = useState(false)
-
   return (
     <section id="a-propos" className="about section">
       <div className="container about__inner">
@@ -43,35 +37,9 @@ function About() {
                 produits bien pensés, utiles, prêts pour de vrais utilisateurs.
               </p>
             </div>
-
-            <div className="about__actions">
-              <Button
-                variant="gold"
-                onClick={() => setIsCvOpen(true)}
-                aria-haspopup="dialog"
-              >
-                Voir mon CV
-                <FileText aria-hidden="true" size={18} />
-              </Button>
-            </div>
           </div>
         </div>
       </div>
-
-      {isCvOpen && (
-        <Modal
-          title="CV de Marc Pero"
-          onClose={() => setIsCvOpen(false)}
-          action={
-            <Button href="/cv-marc.pdf" variant="ghost" className="btn--sm" download>
-              <FileDown aria-hidden="true" size={16} />
-              Télécharger
-            </Button>
-          }
-        >
-          <iframe src="/cv-marc.html" title="CV de Marc Pero" />
-        </Modal>
-      )}
     </section>
   )
 }

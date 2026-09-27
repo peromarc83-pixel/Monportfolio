@@ -1,22 +1,23 @@
 /* Les 4 domaines en texte, sans carte : nom coloré + description + technos. */
+/* mobile : une seule colonne */
 .su {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: 1fr;
   gap: clamp(20px, 3vw, 40px);
   list-style: none;
   margin: clamp(34px, 5vw, 52px) 0 0;
   padding: 0;
 }
 
-@media (max-width: 1000px) {
+@media (min-width: 561px) {
   .su {
     grid-template-columns: 1fr 1fr;
   }
 }
 
-@media (max-width: 560px) {
+@media (min-width: 1001px) {
   .su {
-    grid-template-columns: 1fr;
+    grid-template-columns: repeat(4, 1fr);
   }
 }
 

@@ -110,16 +110,17 @@
   }
 }
 
+/* mobile : taille de lecture standard */
 .about__body p {
-  font-size: 1.2rem;
-  line-height: 1.7;
+  font-size: 1.1rem;
+  line-height: 1.65;
 }
 
-/* mobile : pas de largeur à occuper, on revient à une taille de lecture standard */
-@media (max-width: 640px) {
+/* au-delà de 640px : plus de largeur disponible, texte agrandi */
+@media (min-width: 641px) {
   .about__body p {
-    font-size: 1.1rem;
-    line-height: 1.65;
+    font-size: 1.2rem;
+    line-height: 1.7;
   }
 }
 
@@ -145,10 +146,4 @@
 
 .about__inner .section-title__title {
   font-size: clamp(2.1rem, 4.5vw, 3.1rem);
-}
-
-.about__actions {
-  display: flex;
-  flex-wrap: wrap;
-  gap: var(--space-3);
 }

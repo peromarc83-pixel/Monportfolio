@@ -123,6 +123,14 @@
 
 .hero-constellation__icon {
   display: inline-flex;
+  animation: hero-icon-fly-in 700ms cubic-bezier(0.34, 1.56, 0.64, 1) both;
+  animation-play-state: paused;
+  will-change: transform, opacity;
+}
+
+/* attend la fin du rideau de chargement (cf. Loader.jsx) avant de s'envoler */
+body.is-loaded .hero-constellation__icon {
+  animation-play-state: running;
 }
 
 .hero-constellation__icon svg {
@@ -130,3 +138,26 @@
   height: clamp(30px, 5vw, 44px);
   filter: drop-shadow(0 2px 10px rgba(0, 0, 0, 0.6));
 }
+
+/* arrivée décalée : chaque icône part d'un point dispersé et rejoint sa place.
+   Un seul segment (from/to) : appliquer la courbe d'accélération sur plusieurs
+   keyframes intermédiaires la relance à chaque étape et donne un mouvement saccadé. */
+@keyframes hero-icon-fly-in {
+  from {
+    transform: translate(var(--fly-x), var(--fly-y)) rotate(var(--fly-r)) scale(0.4);
+    opacity: 0;
+  }
+  to {
+    transform: translate(0, 0) rotate(0deg) scale(1);
+    opacity: 1;
+  }
+}
+
+.hero-constellation__icon:nth-child(1) { --fly-x: -170px; --fly-y: -75px; --fly-r: -35deg; animation-delay: 0ms; }
+.hero-constellation__icon:nth-child(2) { --fly-x: 125px; --fly-y: -115px; --fly-r: 50deg; animation-delay: 70ms; }
+.hero-constellation__icon:nth-child(3) { --fly-x: -95px; --fly-y: 105px; --fly-r: -60deg; animation-delay: 140ms; }
+.hero-constellation__icon:nth-child(4) { --fly-x: 175px; --fly-y: 60px; --fly-r: 40deg; animation-delay: 210ms; }
+.hero-constellation__icon:nth-child(5) { --fly-x: -155px; --fly-y: 20px; --fly-r: 70deg; animation-delay: 280ms; }
+.hero-constellation__icon:nth-child(6) { --fly-x: 60px; --fly-y: -145px; --fly-r: -45deg; animation-delay: 350ms; }
+.hero-constellation__icon:nth-child(7) { --fly-x: -45px; --fly-y: 130px; --fly-r: 55deg; animation-delay: 420ms; }
+.hero-constellation__icon:nth-child(8) { --fly-x: 145px; --fly-y: 90px; --fly-r: -50deg; animation-delay: 490ms; }
