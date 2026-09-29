@@ -8,7 +8,13 @@
   --color-accent: #c9a227; /* accent chaud : CTA secondaires, badges */
   --color-success: #7ed99b; /* validations, scores "au vert" */
   --color-danger: #ff6b6a; /* erreurs de formulaire */
+  --color-gold-light: #f0d27a;
+  --color-amber: #e39a4f;
+  --color-champagne: #eadcb4;
+  --color-bronze: #b8865b;
+  --color-bronze-deep: #8a7650;
   --color-bg: #0c0b09; /* surface unie de base (champs, aplats) */
+  --color-section: #0b0a08;
   --color-wash: rgba(232, 196, 90, 0.035); /* voile clair : alterne les sections */
   --color-line: rgba(232, 196, 90, 0.18); /* bordures, séparateurs */
   --surface: rgba(255, 255, 255, 0.03); /* fond des puces / champs posés sur le dégradé */
@@ -19,19 +25,13 @@
     rgba(232, 196, 90, 0.01)
   ); /* fond teinté : navbar, footer */
 
-  /* Dégradé de fond de page */
-  --gradient-page:
-    radial-gradient(1100px 650px at 12% 4%, rgba(232, 196, 90, 0.1), transparent 55%),
-    radial-gradient(900px 600px at 92% 10%, rgba(201, 162, 39, 0.08), transparent 55%),
-    linear-gradient(180deg, #08080a 0%, #12100a 28%, #17130a 50%, #12100a 72%, #08080a 100%);
-
   /* Dégradé "jeton" : bille du logo, sphères de compétences, fonds de bouton plein */
   --gradient-badge: radial-gradient(circle at 32% 28%, #26241d 0%, #0d0d0f 78%);
   --gradient-badge-hover: radial-gradient(circle at 32% 28%, #332f24 0%, #131311 78%);
 
   /* Typographie */
-  --font-display: 'Space Grotesk', Georgia, sans-serif; /* titres */
-  --font-body: 'Inter', system-ui, sans-serif; /* corps */
+  --font-display: 'Fraunces', Georgia, serif; /* titres */
+  --font-body: 'Geist', system-ui, sans-serif; /* corps */
   --font-mono: 'JetBrains Mono', ui-monospace, monospace; /* code, tags, chiffres */
   --font-script: 'Allura', cursive; /* signature manuscrite */
 

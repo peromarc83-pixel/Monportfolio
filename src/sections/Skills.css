@@ -1,15 +1,6 @@
 /* fond dégradé doré (identique aux autres sections sans photo) */
 .skills {
-  background:
-    radial-gradient(950px 650px at 10% -10%, rgba(232, 196, 90, 0.13), transparent 55%),
-    radial-gradient(800px 600px at 92% 108%, rgba(201, 162, 39, 0.1), transparent 55%),
-    linear-gradient(155deg, rgba(232, 196, 90, 0.045) 0%, transparent 35%, transparent 65%, rgba(201, 162, 39, 0.035) 100%),
-    #050506;
-}
-
-/* section Compétences : typographie un cran au-dessus */
-.skills .section-title__eyebrow {
-  font-size: 0.95rem;
+  background: var(--color-section);
 }
 
 .skills .section-title__subtitle {

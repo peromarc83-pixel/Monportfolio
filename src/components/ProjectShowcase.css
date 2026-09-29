@@ -41,7 +41,7 @@
   align-items: center;
   justify-content: center;
   font-family: var(--font-display);
-  font-weight: 700;
+  font-weight: 500;
   font-size: 1.6rem;
   color: var(--color-primary);
   background: var(--color-primary-soft);
@@ -88,9 +88,8 @@
 }
 
 .project-card__stack li {
-  font-family: var(--font-mono);
-  font-size: 0.75rem;
-  letter-spacing: 0.02em;
+  font-size: 0.82rem;
+  font-weight: 500;
   white-space: nowrap;
   color: var(--color-primary);
 }
@@ -116,17 +115,14 @@
 }
 
 .project-card__metrics b {
-  font-family: var(--font-mono);
-  font-size: 0.8rem;
+  font-size: 0.85rem;
+  font-weight: 600;
   color: var(--color-success);
   font-variant-numeric: tabular-nums;
 }
 
 .project-card__metrics span {
-  font-family: var(--font-mono);
-  font-size: 0.72rem;
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
+  font-size: 0.8rem;
   color: var(--color-ink-soft);
 }
 

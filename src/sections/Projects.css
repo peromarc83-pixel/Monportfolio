@@ -1,11 +1,7 @@
 /* fond dégradé doré (identique à Contact / À propos / Parcours) : le visuel
    de la section, ce sont les captures des projets dans les cartes. */
 .projects {
-  background:
-    radial-gradient(950px 650px at 10% -10%, rgba(232, 196, 90, 0.13), transparent 55%),
-    radial-gradient(800px 600px at 92% 108%, rgba(201, 162, 39, 0.1), transparent 55%),
-    linear-gradient(155deg, rgba(232, 196, 90, 0.045) 0%, transparent 35%, transparent 65%, rgba(201, 162, 39, 0.035) 100%),
-    #050506;
+  background: var(--color-section);
 }
 
 @media (min-width: 1024px) {

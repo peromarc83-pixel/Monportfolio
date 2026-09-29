@@ -26,7 +26,9 @@ function HeroConstellation() {
             Marc<span className="hero-constellation__title-dot">.</span>
             <span className="sr-only"> — Développeur front-end React, en formation full-stack</span>
           </h1>
-          <p className="hero-constellation__role">Développeur front-end React</p>
+          <p className="hero-constellation__role">
+            Développeur front-end <em>React</em>
+          </p>
           <p className="hero-constellation__tagline">
           Développeur web orienté front-end, avec des bases solides en back-end qui me permettent de mener un projet du prototype à la mise en ligne. Mon objectif : des interfaces claires, accessibles et performantes.
           </p>

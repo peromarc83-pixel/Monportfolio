@@ -37,7 +37,8 @@
   margin: 0;
   display: flex;
   font-family: var(--font-display);
-  font-weight: 700;
+  font-weight: 500;
+  letter-spacing: -0.03em;
   font-size: clamp(2.4rem, 7.5vw, 3.8rem);
   color: var(--color-ink);
 }
@@ -154,8 +155,7 @@
 }
 
 .loader__percent {
-  font-family: var(--font-mono);
-  font-size: 0.8rem;
+  font-size: 0.85rem;
   color: var(--color-ink-soft);
   font-variant-numeric: tabular-nums;
 }

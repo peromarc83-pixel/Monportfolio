@@ -1,11 +1,7 @@
 /* fond dégradé doré (identique à Contact) ; timeline sans panneau,
    dans une colonne de lecture centrée comme le Hero. */
 .journey {
-  background:
-    radial-gradient(950px 650px at 10% -10%, rgba(232, 196, 90, 0.13), transparent 55%),
-    radial-gradient(800px 600px at 92% 108%, rgba(201, 162, 39, 0.1), transparent 55%),
-    linear-gradient(155deg, rgba(232, 196, 90, 0.045) 0%, transparent 35%, transparent 65%, rgba(201, 162, 39, 0.035) 100%),
-    #050506;
+  background: var(--color-section);
 }
 
 .journey .container {
@@ -57,9 +53,7 @@
     height: 14px;
     border-radius: 50%;
     background: var(--dot, var(--color-primary));
-    box-shadow:
-      0 0 0 5px #050506,
-      0 0 16px var(--dot, var(--color-primary));
+    box-shadow: 0 0 0 5px var(--color-section);
   }
 
   .journey__list {

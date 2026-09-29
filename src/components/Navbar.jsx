@@ -64,7 +64,7 @@ function Navbar() {
                 aria-current={activeId === link.href.slice(1) ? 'true' : undefined}
                 onClick={closeMenu}
               >
-                <span className="navbar__link-prefix" aria-hidden="true">//</span> {link.label}
+                {link.label}
               </a>
             </li>
           ))}

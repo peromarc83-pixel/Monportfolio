@@ -18,9 +18,10 @@ const OUT_DIR = fileURLToPath(new URL('../public/fonts/', import.meta.url))
 // Familles et graisses réellement utilisées dans src/styles + src/components
 const FAMILIES =
   'family=Allura' +
+  '&family=Fraunces:ital,opsz,wght@0,9..144,400..600;1,9..144,400..500' +
+  '&family=Geist:wght@400..600' +
   '&family=Inter:wght@400;500;600;700' +
-  '&family=JetBrains+Mono:wght@400;600' +
-  '&family=Poppins:wght@800' +
+  '&family=JetBrains+Mono:wght@400;600;700' +
   '&family=Space+Grotesk:wght@500;600;700'
 
 const SUBSETS = new Set(['latin', 'latin-ext'])

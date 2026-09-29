@@ -47,7 +47,7 @@ export const UNIVERSES = [
   {
     id: 'front',
     name: 'Front-end',
-    color: '#7c83f0',
+    color: 'var(--color-primary)',
     icon: Code2,
     description:
       "Construire l'interface : structure, style, gestion d'état et outil de build.",
@@ -57,7 +57,7 @@ export const UNIVERSES = [
       { name: 'HTML5', Icon: SiHtml5, color: '#E34F26' },
       { name: 'CSS3', Icon: SiCss, color: '#3C9CD7' },
       { name: 'SCSS', Icon: SiSass, color: '#CF6E9C' },
-      { name: 'BEM', Icon: Braces, color: '#7c83f0' },
+      { name: 'BEM', Icon: Braces, color: 'var(--color-primary)' },
       { name: 'Redux Toolkit', Icon: SiRedux, color: '#A984E0' },
       { name: 'Vite', Icon: SiVite, color: '#9A8CFF' },
     ],
@@ -65,7 +65,7 @@ export const UNIVERSES = [
   {
     id: 'back',
     name: 'Back-end',
-    color: '#3fc9d4',
+    color: 'var(--color-amber)',
     icon: Server,
     description:
       'Servir les données : API REST, base de données, authentification et documentation.',
@@ -73,7 +73,7 @@ export const UNIVERSES = [
       { name: 'Node.js', Icon: SiNodedotjs, color: '#7DC960' },
       { name: 'Express', Icon: SiExpress, color: '#E7E8F2' },
       { name: 'MongoDB', Icon: SiMongodb, color: '#4CB050' },
-      { name: 'API REST', Icon: Webhook, color: '#3fc9d4' },
+      { name: 'API REST', Icon: Webhook, color: 'var(--color-amber)' },
       { name: 'JWT', Icon: SiJsonwebtokens, color: '#E7E8F2' },
       { name: 'Swagger / OpenAPI', Icon: SiSwagger, color: '#85EA2D' },
     ],
@@ -81,7 +81,7 @@ export const UNIVERSES = [
   {
     id: 'tools',
     name: 'Outils',
-    color: '#a98bff',
+    color: 'var(--color-champagne)',
     icon: Wrench,
     description:
       'Versionner, déployer, mesurer et cadrer le travail au quotidien.',
@@ -99,16 +99,16 @@ export const UNIVERSES = [
   {
     id: 'spec',
     name: 'Spécialités',
-    color: '#3fca86',
+    color: 'var(--color-bronze)',
     icon: ShieldCheck,
     description:
       'Ce que je surveille sur chaque projet, du premier commit à la mise en ligne.',
     skills: [
-      { name: 'Accessibilité (WCAG AA)', Icon: Accessibility, color: '#3fca86' },
-      { name: 'SEO technique', Icon: Search, color: '#3fca86' },
-      { name: 'Sécurité web', Icon: ShieldCheck, color: '#3fca86' },
-      { name: 'RGPD / CNIL', Icon: Lock, color: '#3fca86' },
-      { name: 'Performance', Icon: Gauge, color: '#3fca86' },
+      { name: 'Accessibilité (WCAG AA)', Icon: Accessibility, color: 'var(--color-bronze)' },
+      { name: 'SEO technique', Icon: Search, color: 'var(--color-bronze)' },
+      { name: 'Sécurité web', Icon: ShieldCheck, color: 'var(--color-bronze)' },
+      { name: 'RGPD / CNIL', Icon: Lock, color: 'var(--color-bronze)' },
+      { name: 'Performance', Icon: Gauge, color: 'var(--color-bronze)' },
     ],
   },
 ]
