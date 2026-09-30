@@ -164,7 +164,7 @@ code {
   z-index: 100;
   padding: var(--space-2) var(--space-4);
   background: var(--color-primary-strong);
-  color: #fff;
+  color: #120d02;
   border-radius: var(--radius-btn);
   transition: top 0.15s ease;
 }

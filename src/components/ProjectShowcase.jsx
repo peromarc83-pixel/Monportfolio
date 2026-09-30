@@ -17,6 +17,8 @@ function CardImage({ image, title }) {
     <img
       className="project-card__shot"
       src={image}
+      srcSet={`${image.replace('.webp', '-800.webp')} 800w, ${image} 1600w`}
+      sizes="(min-width: 901px) 340px, (min-width: 600px) 50vw, 100vw"
       alt=""
       aria-hidden="true"
       loading="lazy"

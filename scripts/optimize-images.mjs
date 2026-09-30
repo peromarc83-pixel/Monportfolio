@@ -14,6 +14,7 @@ import sharp from "sharp";
 const SRC_DIR = "assets/project-shots";
 const OUT_DIR = "public/images";
 const TARGET = { width: 1600, height: 667 }; // ratio 12/5 (cf. ProjectCard.css)
+const SMALL = { width: 800, height: 333 };
 
 const files = await readdir(SRC_DIR);
 const sources = files.filter((f) => /\.(png|jpe?g)$/i.test(f));
@@ -31,6 +32,14 @@ for (const file of sources) {
     .webp({ quality: 82 })
     .toFile(out);
 
+  const outSmall = join(OUT_DIR, `${name}-800.webp`);
+  await sharp(join(SRC_DIR, file))
+    .resize({ ...SMALL, fit: "cover", position: "top" })
+    .webp({ quality: 80 })
+    .toFile(outSmall);
+
   const { size } = await stat(out);
+  const { size: sizeSmall } = await stat(outSmall);
   console.log(`✓ ${out}  (${TARGET.width}x${TARGET.height}, ${Math.round(size / 1024)} Ko)`);
+  console.log(`✓ ${outSmall}  (${SMALL.width}x${SMALL.height}, ${Math.round(sizeSmall / 1024)} Ko)`);
 }

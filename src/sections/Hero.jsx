@@ -15,6 +15,8 @@ function Hero() {
       <img
         className="hero__bg"
         src="/images/hero-circuit.webp"
+        srcSet="/images/hero-circuit-1280.webp 1280w, /images/hero-circuit.webp 1920w"
+        sizes="100vw"
         fetchPriority="high"
         alt=""
         aria-hidden="true"
@@ -27,9 +29,9 @@ function Hero() {
             Marc<span className="hero__title-dot">.</span>
             <span className="sr-only"> — Développeur front-end React, en formation full-stack</span>
           </h1>
-          <p className="hero__role">
+          <h2 className="hero__role">
             Développeur front-end <em>React</em>
-          </p>
+          </h2>
           <p className="hero__tagline">
           Développeur web orienté front-end, avec des bases solides en back-end qui me permettent de mener un projet du prototype à la mise en ligne. Mon objectif : des interfaces claires, accessibles et performantes.
           </p>
@@ -41,9 +43,10 @@ function Hero() {
               <FaGithub aria-hidden="true" size={16} />
               GitHub
             </Button>
-            <Button href="/cv-marc.pdf" variant="ghost">
+            <Button href="/cv" variant="ghost" download="CV-Marc-Pero.pdf">
               <Download aria-hidden="true" size={16} />
-              Mon CV
+              Télécharger mon CV
+              <span className="sr-only"> (PDF, 180 Ko)</span>
             </Button>
           </div>
 
