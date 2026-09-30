@@ -1,23 +1,22 @@
 # Portfolio — Marc Pero
 
 Portfolio personnel : présentation, projets, parcours et formulaire de contact.
-Développeur front-end React. 
-
+Développeur front-end React.
 
 ## Stack
 
-| Domaine        | Outils                                                        |
-| -------------- | ------------------------------------------------------------ |
-| Front-end      | React 19, Vite 8                                              |
-| Styles         | CSS natif (fichiers co-localisés + `src/styles`)             |
-| Icônes         | lucide-react, react-icons                                    |
-| Contact        | Fonction serverless Netlify + Nodemailer (SMTP OVH)          |
-| Qualité        | Oxlint, Vitest + Testing Library, vitest-axe (accessibilité) |
-| Hébergement    | Netlify (build + CDN), HTTPS + en-têtes de sécurité |
+| Domaine     | Outils                                                       |
+| ----------- | ------------------------------------------------------------ |
+| Front-end   | React 19, Vite 8                                             |
+| Styles      | CSS natif (fichiers co-localisés + `src/styles`)             |
+| Icônes      | lucide-react, react-icons                                    |
+| Contact     | Fonction serverless Netlify + Nodemailer (SMTP Gmail)        |
+| Qualité     | Oxlint, Vitest + Testing Library, vitest-axe (accessibilité) |
+| Hébergement | Netlify (build + CDN), HTTPS + en-têtes de sécurité          |
 
 ## Prérequis
 
-- Node.js >= 20 (développé sous Node 24)
+- Node.js ^20.19 ou >= 22.12 (requis par Vite 8 ; développé sous Node 24)
 - npm
 
 ## Démarrage
@@ -29,16 +28,17 @@ npm run dev          # http://localhost:5173
 
 ## Scripts
 
-| Script               | Rôle                                                        |
-| -------------------- | ---------------------------------------------------------- |
-| `npm run dev`        | Serveur de développement (HMR)                             |
-| `npm run build`      | Build de production → `dist/`                              |
-| `npm run preview`    | Sert le build de production en local                       |
-| `npm run lint`       | Analyse statique (Oxlint)                                  |
-| `npm test`           | Tests Vitest (une passe, pour la CI)                       |
-| `npm run test:watch` | Tests en mode watch                                        |
-| `npm run images`     | Optimise les images de `public/images`                     |
-| `npm run shots`      | Génère les captures d'écran des projets                    |
+| Script               | Rôle                                                              |
+| -------------------- | ----------------------------------------------------------------- |
+| `npm run dev`        | Serveur de développement (HMR)                                    |
+| `npm run build`      | Build de production → `dist/`                                     |
+| `npm run preview`    | Sert le build de production en local                              |
+| `npm run lint`       | Analyse statique (Oxlint)                                         |
+| `npm test`           | Tests Vitest (une passe, pour la CI)                              |
+| `npm run test:watch` | Tests en mode watch                                               |
+| `npm run images`     | Optimise les images de `public/images`                            |
+| `npm run shots`      | Génère les captures d'écran des projets                           |
+| `npm run fonts`      | Télécharge Fraunces et Geist dans `public/fonts` (auto-hébergées) |
 
 ## Structure
 
@@ -46,14 +46,16 @@ npm run dev          # http://localhost:5173
 src/
 ├── components/     Composants réutilisables (Navbar, Button, Modal, …)
 ├── sections/       Sections de la page (Hero, About, Skills, Projects, Journey, Contact)
-├── data/           Contenu (liste des projets, parcours)
+├── data/           Contenu (projets, compétences, icônes des technos)
 ├── styles/         Variables et styles globaux
 ├── test/           Setup Vitest + tests
 ├── App.jsx
 └── main.jsx
 
 netlify/functions/  Fonction serverless du formulaire de contact
-scripts/            Scripts Node (optimisation d'images, captures, image OG)
+scripts/            Scripts Node (images, portrait, fond du hero, captures, image OG, polices)
+                    + portrait-recolor.py (recoloration du portrait, Python)
+assets/             Images sources, avant optimisation (hero-bg, portrait, project-shots)
 public/             Assets statiques servis tels quels
 ```
 

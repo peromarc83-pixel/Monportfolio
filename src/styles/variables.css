@@ -1,46 +1,41 @@
 :root {
-  /* Palette « constellation » : fond quasi noir, texte crème, accents dorés */
-  --color-ink: #f5f3ee; /* texte principal */
-  --color-ink-soft: #b8b6af; /* texte secondaire */
-  --color-primary: #e8c45a; /* dominante dorée : liens, icônes, titres accent, focus */
-  --color-primary-strong: #c9a227; /* doré soutenu : fonds pleins */
-  --color-primary-soft: rgba(232, 196, 90, 0.1); /* fond teinté (fallback photos, badges) */
-  --color-accent: #c9a227; /* accent chaud : CTA secondaires, badges */
-  --color-success: #7ed99b; /* validations, scores "au vert" */
-  --color-danger: #ff6b6a; /* erreurs de formulaire */
+  --color-ink: #f5f3ee;
+  --color-ink-soft: #b8b6af;
+  --color-primary: #e8c45a;
+  --color-primary-strong: #c9a227;
+  --color-primary-soft: rgba(232, 196, 90, 0.1);
+  --color-accent: #c9a227;
+  --color-success: #7ed99b;
+  --color-danger: #ff6b6a;
   --color-gold-light: #f0d27a;
   --color-amber: #e39a4f;
   --color-champagne: #eadcb4;
   --color-bronze: #b8865b;
   --color-bronze-deep: #8a7650;
-  --color-bg: #0c0b09; /* surface unie de base (champs, aplats) */
+  --color-bg: #0c0b09;
   --color-section: #0b0a08;
-  --color-wash: rgba(232, 196, 90, 0.035); /* voile clair : alterne les sections */
-  --color-line: rgba(232, 196, 90, 0.18); /* bordures, séparateurs */
-  --surface: rgba(255, 255, 255, 0.03); /* fond des puces / champs posés sur le dégradé */
-  --surface-strong: rgba(232, 196, 90, 0.09); /* variante hover/active d'une surface */
+  --color-wash: rgba(232, 196, 90, 0.035);
+  --color-line: rgba(232, 196, 90, 0.18);
+  --surface: rgba(255, 255, 255, 0.03);
+  --surface-strong: rgba(232, 196, 90, 0.09);
   --surface-tint: linear-gradient(
     135deg,
     rgba(232, 196, 90, 0.07),
     rgba(232, 196, 90, 0.01)
-  ); /* fond teinté : navbar, footer */
+  );
 
-  /* Dégradé "jeton" : bille du logo, sphères de compétences, fonds de bouton plein */
   --gradient-badge: radial-gradient(circle at 32% 28%, #26241d 0%, #0d0d0f 78%);
   --gradient-badge-hover: radial-gradient(circle at 32% 28%, #332f24 0%, #131311 78%);
 
-  /* Typographie */
-  --font-display: 'Fraunces', Georgia, serif; /* titres */
-  --font-body: 'Geist', system-ui, sans-serif; /* corps */
-  --font-mono: 'JetBrains Mono', ui-monospace, monospace; /* code, tags, chiffres */
-  --font-script: 'Allura', cursive; /* signature manuscrite */
+  --font-display: 'Fraunces', Georgia, serif;
+  --font-body: 'Geist', system-ui, sans-serif;
+  --font-mono: 'JetBrains Mono', ui-monospace, monospace;
+  --font-script: 'Allura', cursive;
 
-  /* Rayons */
   --radius-card: 12px;
   --radius-btn: 9px;
   --radius-pill: 999px;
 
-  /* Espacements (échelle) */
   --space-1: 4px;
   --space-2: 8px;
   --space-3: 12px;
@@ -48,6 +43,5 @@
   --space-6: 24px;
   --space-8: 32px;
 
-  /* Ombre */
   --shadow-card: 0 18px 40px rgba(0, 0, 0, 0.35);
 }
