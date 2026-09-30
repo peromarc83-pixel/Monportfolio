@@ -123,6 +123,8 @@ function Contact() {
             />
           </div>
 
+          <p className="contact__required">Tous les champs sont obligatoires.</p>
+
           <div className="contact__field">
             <label htmlFor="name">Nom</label>
             <input

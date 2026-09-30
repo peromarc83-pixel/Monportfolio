@@ -15,6 +15,7 @@ function Hero() {
       <img
         className="hero__bg"
         src="/images/hero-circuit.webp"
+        fetchPriority="high"
         alt=""
         aria-hidden="true"
       />

@@ -78,6 +78,12 @@
   gap: var(--space-4);
 }
 
+.contact__required {
+  margin: 0;
+  font-size: 0.8rem;
+  color: var(--color-ink-soft);
+}
+
 .contact__field {
   display: flex;
   flex-direction: column;
@@ -125,6 +131,8 @@
 
 .contact__consent a {
   color: var(--color-primary);
+  text-decoration: underline;
+  text-underline-offset: 2px;
 }
 
 /* Honeypot : invisible pour les humains, présent pour les robots */
