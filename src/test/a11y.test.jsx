@@ -5,7 +5,7 @@ import { describe, expect, it } from 'vitest'
 import App from '@/App.jsx'
 import Navbar from '@/components/Navbar.jsx'
 import Footer from '@/components/Footer.jsx'
-import HeroConstellation from '@/sections/HeroConstellation.jsx'
+import Hero from '@/sections/Hero.jsx'
 import About from '@/sections/About.jsx'
 import Skills from '@/sections/Skills.jsx'
 import Projects from '@/sections/Projects.jsx'
@@ -29,7 +29,7 @@ describe('accessibilité', () => {
 
   const sections = [
     ['Navbar', Navbar],
-    ['HeroConstellation', HeroConstellation],
+    ['Hero', Hero],
     ['About', About],
     ['Skills', Skills],
     ['Projects', Projects],

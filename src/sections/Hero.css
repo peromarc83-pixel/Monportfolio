@@ -1,4 +1,4 @@
-.hero-constellation {
+.hero {
   position: relative;
   overflow: hidden;
   /* le Hero garde une pleine hauteur d'écran, contenu centré */
@@ -12,7 +12,7 @@
 }
 
 /* Photo : Brecht Corbeel sur Unsplash (licence Unsplash, libre d'usage) */
-.hero-constellation__bg {
+.hero__bg {
   position: absolute;
   inset: 0;
   width: 100%;
@@ -26,7 +26,7 @@
 
 /* voile : vignette sombre centrée derrière le texte, laisse voir le circuit
    imprimé éclairé sur les bords */
-.hero-constellation__veil {
+.hero__veil {
   position: absolute;
   inset: 0;
   z-index: 1;
@@ -36,12 +36,12 @@
 }
 
 /* ---------- contenu centré au milieu de l'image ---------- */
-.hero-constellation__inner {
+.hero__inner {
   position: relative;
   z-index: 2;
 }
 
-.hero-constellation__text {
+.hero__text {
   max-width: min(780px, 92vw);
   margin-inline: auto;
   display: flex;
@@ -50,7 +50,7 @@
   text-align: center;
 }
 
-.hero-constellation__title {
+.hero__title {
   margin: 0;
   font-size: clamp(3.25rem, 12vw, 8rem);
   font-weight: 500;
@@ -59,11 +59,11 @@
   text-shadow: 0 4px 32px rgba(0, 0, 0, 0.65);
 }
 
-.hero-constellation__title-dot {
+.hero__title-dot {
   color: var(--color-primary);
 }
 
-.hero-constellation__role {
+.hero__role {
   margin: 0.4rem 0 0;
   font-size: clamp(1.9rem, 5.5vw, 3.4rem);
   font-weight: 400;
@@ -75,18 +75,18 @@
   text-shadow: 0 2px 14px rgba(0, 0, 0, 0.75);
 }
 
-.hero-constellation__role em {
+.hero__role em {
   color: var(--color-primary);
 }
 
-.hero-constellation__tagline {
+.hero__tagline {
   margin: 1.5rem auto 0;
   max-width: 34ch;
   font-size: clamp(1.05rem, 2.4vw, 1.5rem);
   text-shadow: 0 1px 12px rgba(0, 0, 0, 0.8);
 }
 
-.hero-constellation__actions {
+.hero__actions {
   margin-top: var(--space-8);
   display: flex;
   gap: var(--space-3);
@@ -95,30 +95,30 @@
 }
 
 @media (max-height: 800px) {
-  .hero-constellation__title {
+  .hero__title {
     font-size: clamp(2.5rem, 7vw, 4.5rem);
   }
 
-  .hero-constellation__role {
+  .hero__role {
     font-size: clamp(1.3rem, 3.2vw, 2rem);
   }
 
-  .hero-constellation__tagline {
+  .hero__tagline {
     margin-top: 0.85rem;
     font-size: clamp(0.95rem, 1.6vw, 1.15rem);
   }
 
-  .hero-constellation__actions {
+  .hero__actions {
     margin-top: var(--space-4);
   }
 
-  .hero-constellation__stack {
+  .hero__stack {
     margin-top: var(--space-4);
   }
 }
 
 /* ---------- stack : simple rangée d'icônes, sans cadre ni défilement ---------- */
-.hero-constellation__stack {
+.hero__stack {
   margin-top: var(--space-8);
   display: flex;
   flex-wrap: wrap;
@@ -126,7 +126,7 @@
   gap: clamp(16px, 3vw, 30px);
 }
 
-.hero-constellation__icon {
+.hero__icon {
   display: inline-flex;
   animation: hero-icon-fly-in 700ms cubic-bezier(0.34, 1.56, 0.64, 1) both;
   animation-play-state: paused;
@@ -134,11 +134,11 @@
 }
 
 /* attend la fin du rideau de chargement (cf. Loader.jsx) avant de s'envoler */
-body.is-loaded .hero-constellation__icon {
+body.is-loaded .hero__icon {
   animation-play-state: running;
 }
 
-.hero-constellation__icon svg {
+.hero__icon svg {
   width: clamp(30px, 5vw, 44px);
   height: clamp(30px, 5vw, 44px);
   filter: grayscale(1) sepia(0.6) saturate(1.6) hue-rotate(-8deg) brightness(0.95)
@@ -160,11 +160,11 @@ body.is-loaded .hero-constellation__icon {
   }
 }
 
-.hero-constellation__icon:nth-child(1) { --fly-x: -170px; --fly-y: -75px; --fly-r: -35deg; animation-delay: 0ms; }
-.hero-constellation__icon:nth-child(2) { --fly-x: 125px; --fly-y: -115px; --fly-r: 50deg; animation-delay: 70ms; }
-.hero-constellation__icon:nth-child(3) { --fly-x: -95px; --fly-y: 105px; --fly-r: -60deg; animation-delay: 140ms; }
-.hero-constellation__icon:nth-child(4) { --fly-x: 175px; --fly-y: 60px; --fly-r: 40deg; animation-delay: 210ms; }
-.hero-constellation__icon:nth-child(5) { --fly-x: -155px; --fly-y: 20px; --fly-r: 70deg; animation-delay: 280ms; }
-.hero-constellation__icon:nth-child(6) { --fly-x: 60px; --fly-y: -145px; --fly-r: -45deg; animation-delay: 350ms; }
-.hero-constellation__icon:nth-child(7) { --fly-x: -45px; --fly-y: 130px; --fly-r: 55deg; animation-delay: 420ms; }
-.hero-constellation__icon:nth-child(8) { --fly-x: 145px; --fly-y: 90px; --fly-r: -50deg; animation-delay: 490ms; }
+.hero__icon:nth-child(1) { --fly-x: -170px; --fly-y: -75px; --fly-r: -35deg; animation-delay: 0ms; }
+.hero__icon:nth-child(2) { --fly-x: 125px; --fly-y: -115px; --fly-r: 50deg; animation-delay: 70ms; }
+.hero__icon:nth-child(3) { --fly-x: -95px; --fly-y: 105px; --fly-r: -60deg; animation-delay: 140ms; }
+.hero__icon:nth-child(4) { --fly-x: 175px; --fly-y: 60px; --fly-r: 40deg; animation-delay: 210ms; }
+.hero__icon:nth-child(5) { --fly-x: -155px; --fly-y: 20px; --fly-r: 70deg; animation-delay: 280ms; }
+.hero__icon:nth-child(6) { --fly-x: 60px; --fly-y: -145px; --fly-r: -45deg; animation-delay: 350ms; }
+.hero__icon:nth-child(7) { --fly-x: -45px; --fly-y: 130px; --fly-r: 55deg; animation-delay: 420ms; }
+.hero__icon:nth-child(8) { --fly-x: 145px; --fly-y: 90px; --fly-r: -50deg; animation-delay: 490ms; }

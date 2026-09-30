@@ -1,5 +1,5 @@
 import SectionTitle from '@/components/SectionTitle.jsx'
-import SkillsUniverse from '@/components/SkillsUniverse.jsx'
+import SkillGroups from '@/components/SkillGroups.jsx'
 import './Skills.css'
 
 function Skills() {
@@ -12,7 +12,7 @@ function Skills() {
           subtitle="Surtout du front-end React, avec des bases côté back-end, et le souci de l'accessibilité, de la performance et de la sécurité."
           id="competences-title"
         />
-        <SkillsUniverse />
+        <SkillGroups />
       </div>
     </section>
   )

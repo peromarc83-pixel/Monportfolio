@@ -1,7 +1,7 @@
 import Navbar from '@/components/Navbar.jsx'
 import Footer from '@/components/Footer.jsx'
 import Loader from '@/components/Loader.jsx'
-import HeroConstellation from '@/sections/HeroConstellation.jsx'
+import Hero from '@/sections/Hero.jsx'
 import About from '@/sections/About.jsx'
 import Skills from '@/sections/Skills.jsx'
 import Projects from '@/sections/Projects.jsx'
@@ -17,7 +17,7 @@ function App() {
       </a>
       <Navbar />
       <main id="main">
-        <HeroConstellation />
+        <Hero />
         <About />
         <Skills />
         <Projects />

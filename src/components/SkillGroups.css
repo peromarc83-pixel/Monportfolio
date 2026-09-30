@@ -1,6 +1,6 @@
 /* Les 4 domaines en texte, sans carte : nom coloré + description + technos. */
 /* mobile : une seule colonne */
-.su {
+.skill-groups {
   display: grid;
   grid-template-columns: 1fr;
   gap: clamp(20px, 3vw, 40px);
@@ -10,24 +10,24 @@
 }
 
 @media (min-width: 561px) {
-  .su {
+  .skill-groups {
     grid-template-columns: 1fr 1fr;
   }
 }
 
 @media (min-width: 1001px) {
-  .su {
+  .skill-groups {
     grid-template-columns: repeat(4, 1fr);
   }
 }
 
 /* filet coloré à gauche de chaque domaine : ré-ancre la grille de texte */
-.su__uni {
+.skill-groups__group {
   border-left: 2px solid var(--hue);
   padding-left: clamp(12px, 1.4vw, 18px);
 }
 
-.su__uni-name {
+.skill-groups__name {
   margin: 0;
   font-family: var(--font-display);
   font-size: 1.5rem;
@@ -35,18 +35,18 @@
   color: var(--color-ink);
 }
 
-.su__uni-name::after {
+.skill-groups__name::after {
   content: '.';
   color: var(--hue);
 }
 
-.su__uni-desc {
+.skill-groups__desc {
   margin: 8px 0 14px;
   font-size: 0.98rem;
   color: var(--color-ink-soft);
 }
 
-.su__uni-skills {
+.skill-groups__skills {
   list-style: none;
   margin: 0;
   padding: 0;
@@ -58,36 +58,36 @@
 /* écran bas : la liste de 8 technos dans « Outils » est la plus haute des 4
    colonnes, resserrée en priorité */
 @media (max-height: 800px) {
-  .su {
+  .skill-groups {
     margin-top: 16px;
     gap: 20px;
   }
 
-  .su__uni-name {
+  .skill-groups__name {
     font-size: 1.1rem;
   }
 
-  .su__uni-desc {
+  .skill-groups__desc {
     margin: 4px 0 8px;
     font-size: 0.88rem;
   }
 
-  .su__uni-skills {
+  .skill-groups__skills {
     gap: 3px;
   }
 
-  .su__uni-skills li {
+  .skill-groups__skills li {
     font-size: 0.85rem;
   }
 }
 
-.su__uni-skills li {
+.skill-groups__skills li {
   font-size: 0.95rem;
   font-weight: 500;
   color: var(--color-ink);
 }
 
-.su__uni-skills li::before {
+.skill-groups__skills li::before {
   content: '';
   display: inline-block;
   width: 5px;

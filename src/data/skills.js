@@ -43,7 +43,7 @@ import {
  * sombre ; les notions sans logo (BEM, API REST, accessibilité…) utilisent
  * une icône Lucide dans la couleur de leur univers.
  */
-export const UNIVERSES = [
+export const SKILL_GROUPS = [
   {
     id: 'front',
     name: 'Front-end',
