@@ -54,7 +54,6 @@ src/
 
 netlify/functions/  Fonction serverless du formulaire de contact
 scripts/            Scripts Node (images, portrait, fond du hero, captures, image OG, polices)
-                    + portrait-recolor.py (recoloration du portrait, Python)
 assets/             Images sources, avant optimisation (hero-bg, portrait, project-shots)
 public/             Assets statiques servis tels quels
 ```
