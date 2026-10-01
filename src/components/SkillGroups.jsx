@@ -1,93 +1,104 @@
-import { useEffect, useRef, useState } from 'react'
+import { useState } from 'react'
 import { SKILL_GROUPS } from '@/data/skills.js'
 import { projects } from '@/data/projects.js'
 import './SkillGroups.css'
 
-const PROJECTS_BY_ID = Object.fromEntries(projects.map((project) => [project.id, project]))
+const PROJECT_NAMES = Object.fromEntries(projects.map((project) => [project.id, project.shortTitle ?? project.title]))
 
-const TYPE_LABELS = {
-  client: 'Client',
-  formation: 'Formation',
+const ALL = 'all'
+
+const HINT = 'Survolez ou touchez une technologie pour voir les projets qui l\'utilisent.'
+
+const FILTERS = [
+  { id: ALL, name: 'Tout', description: '' },
+  ...SKILL_GROUPS.map(({ id, name, description }) => ({ id, name, description })),
+]
+
+const ALL_SKILLS = SKILL_GROUPS.flatMap((group) =>
+  group.skills.map((skill) => ({
+    ...skill,
+    group: group.id,
+    usedIn: (skill.projects ?? []).map((projectId) => PROJECT_NAMES[projectId]).filter(Boolean),
+  })),
+)
+
+function SkillLogo({ skill }) {
+  if (skill.logo) {
+    return <img src={skill.logo} alt="" width="34" height="34" />
+  }
+  const { Icon } = skill
+  return <Icon aria-hidden="true" style={{ color: skill.color }} />
 }
 
-/**
- * Section « Compétences » : les 4 domaines réduits au texte — nom coloré,
- * description, technos en liste. Pas de carte. La photo de fond est portée
- * par la section parente (Skills.jsx).
- */
 function SkillGroups() {
-  const [openSkill, setOpenSkill] = useState(null)
-  const rootRef = useRef(null)
+  const [active, setActive] = useState(ALL)
+  const [hovered, setHovered] = useState(null)
+  const [pinned, setPinned] = useState(null)
 
-  useEffect(() => {
-    if (!openSkill) return undefined
-    const handlePointer = (event) => {
-      if (!rootRef.current?.contains(event.target)) setOpenSkill(null)
-    }
-    const handleKey = (event) => {
-      if (event.key === 'Escape') setOpenSkill(null)
-    }
-    document.addEventListener('pointerdown', handlePointer)
-    document.addEventListener('keydown', handleKey)
-    return () => {
-      document.removeEventListener('pointerdown', handlePointer)
-      document.removeEventListener('keydown', handleKey)
-    }
-  }, [openSkill])
+  const filter = FILTERS.find((item) => item.id === active)
+  const visible = active === ALL ? ALL_SKILLS : ALL_SKILLS.filter((skill) => skill.group === active)
+  const shown = ALL_SKILLS.find((skill) => skill.name === (hovered ?? pinned))
+
+  const selectFilter = (id) => {
+    setActive(id)
+    setPinned(null)
+  }
 
   return (
-    <ul ref={rootRef} className="skill-groups" role="list" aria-label="Compétences par domaine">
-      {SKILL_GROUPS.map((group) => (
-        <li key={group.id} className="skill-groups__group" style={{ '--hue': group.color }}>
-          <h3 className="skill-groups__name">{group.name}</h3>
-          <p className="skill-groups__desc">{group.description}</p>
-          <ul className="skill-groups__skills">
-            {group.skills.map((skill) => {
-              const used = (skill.projects ?? []).map((id) => PROJECTS_BY_ID[id]).filter(Boolean)
-              if (used.length === 0) {
-                return (
-                  <li key={skill.name}>
-                    <span className="skill-groups__skill">{skill.name}</span>
-                  </li>
-                )
-              }
-              const popId = `skill-${group.id}-${skill.name.replace(/[^a-z0-9]+/gi, '-').toLowerCase()}`
-              const isOpen = openSkill === popId
-              return (
-                <li key={skill.name} className="skill-groups__item">
-                  <button
-                    type="button"
-                    className="skill-groups__skill skill-groups__skill--linked"
-                    aria-expanded={isOpen}
-                    aria-controls={popId}
-                    onClick={() => setOpenSkill(isOpen ? null : popId)}
-                  >
-                    {skill.name}
-                  </button>
-                  <div id={popId} className="skill-groups__pop" data-open={isOpen}>
-                    <span className="skill-groups__pop-label">
-                      {used.length > 1 ? `${used.length} projets` : '1 projet'}
-                    </span>
-                    <ul className="skill-groups__projects">
-                      {used.map((project) => (
-                        <li key={project.id}>
-                          <a href={`#projet-${project.id}`} onClick={() => setOpenSkill(null)}>
-                            {project.title}
-                          </a>
-                          <span className={`skill-groups__tag skill-groups__tag--${project.type}`}>
-                            {TYPE_LABELS[project.type]}
-                          </span>
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-                </li>
-              )
-            })}
-          </ul>
-        </li>
-      ))}
-    </ul>
+    <div className="skill-groups">
+      <p className="skill-groups__info" aria-live="polite">
+        {shown?.usedIn.length > 0 ? (
+          <>
+            <strong>{shown.name}</strong> : utilisé dans {shown.usedIn.join(' · ')}
+          </>
+        ) : (
+          HINT
+        )}
+      </p>
+
+      <ul className="skill-groups__filters" aria-label="Filtrer par domaine">
+        {FILTERS.map((item) => (
+          <li key={item.id}>
+            <button
+              type="button"
+              className="skill-groups__chip"
+              aria-pressed={item.id === active}
+              onClick={() => selectFilter(item.id)}
+            >
+              {item.name}
+            </button>
+          </li>
+        ))}
+      </ul>
+
+      <p className="skill-groups__desc">{filter.description}</p>
+
+      <ul className="skill-groups__grid" aria-label="Technologies">
+        {visible.map((skill, index) => (
+          <li
+            key={`${active}-${skill.name}`}
+            className="skill-groups__item"
+            style={{ animationDelay: `${index * 18}ms` }}
+          >
+            <button
+              type="button"
+              className="skill-groups__skill"
+              aria-pressed={pinned === skill.name}
+              onMouseEnter={() => setHovered(skill.name)}
+              onMouseLeave={() => setHovered(null)}
+              onFocus={() => setHovered(skill.name)}
+              onBlur={() => setHovered(null)}
+              onClick={() => setPinned(pinned === skill.name ? null : skill.name)}
+            >
+              <span className="skill-groups__logo">
+                <SkillLogo skill={skill} />
+              </span>
+              <span className="skill-groups__name">{skill.name}</span>
+            </button>
+          </li>
+        ))}
+      </ul>
+    </div>
   )
 }
 

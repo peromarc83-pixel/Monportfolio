@@ -1,41 +1,49 @@
 .hero {
   position: relative;
   overflow: hidden;
-  /* le Hero garde une pleine hauteur d'écran, contenu centré */
-  min-height: calc(100vh - 64px);
-  min-height: calc(100svh - 64px);
+  min-height: min(calc(100vh - 64px), 720px);
+  min-height: min(calc(100svh - 64px), 720px);
   display: flex;
   flex-direction: column;
   justify-content: center;
-  /* fond de secours pendant le chargement de la photo, et sous le voile */
-  background: radial-gradient(120% 120% at 78% 25%, #17130a 0%, #12100a 46%, #08080a 100%);
+  background: var(--color-bg);
 }
 
-/* Photo : Brecht Corbeel sur Unsplash (licence Unsplash, libre d'usage) */
-.hero__bg {
+.hero__photo {
   position: absolute;
   inset: 0;
+  z-index: 0;
   width: 100%;
   height: 100%;
   object-fit: cover;
-  object-position: 60% 45%;
-  z-index: 0;
-  opacity: 0.38;
-  filter: brightness(1.2) saturate(0.75) sepia(0.25);
+  object-position: 0% 50%;
+  opacity: 0.85;
+  filter: grayscale(1) contrast(1.3) sepia(0.6) saturate(1.4) brightness(0.72);
 }
 
-/* voile : vignette sombre centrée derrière le texte, laisse voir le circuit
-   imprimé éclairé sur les bords */
 .hero__veil {
   position: absolute;
   inset: 0;
   z-index: 1;
-  background:
-    radial-gradient(80% 65% at 50% 50%, rgba(8, 8, 10, 0.72) 0%, rgba(8, 8, 10, 0.45) 55%, rgba(8, 8, 10, 0.16) 100%),
-    linear-gradient(180deg, rgba(8, 8, 10, 0.28) 0%, rgba(8, 8, 10, 0.36) 100%);
+  background: radial-gradient(55% 60% at 50% 50%, rgba(12, 11, 9, 0.82) 0%, rgba(12, 11, 9, 0.45) 60%, rgba(12, 11, 9, 0.15) 100%);
 }
 
-/* ---------- contenu centré au milieu de l'image ---------- */
+@media (max-width: 640px) {
+  .hero__photo {
+    object-position: 75% 40%;
+  }
+}
+
+.hero__rule {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 2;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(232, 196, 90, 0.45), transparent);
+}
+
 .hero__inner {
   position: relative;
   z-index: 2;
@@ -52,19 +60,28 @@
 
 .hero__title {
   margin: 0;
-  font-size: clamp(3.25rem, 12vw, 8rem);
-  font-weight: 500;
-  line-height: 0.95;
-  letter-spacing: -0.035em;
-  text-shadow: 0 4px 32px rgba(0, 0, 0, 0.65);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.6rem;
 }
 
-.hero__title-dot {
+.hero__name {
+  font-family: var(--font-body);
+  font-size: clamp(1.6rem, 3vw, 2rem);
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  line-height: 1.1;
+  color: var(--color-ink);
+  text-shadow: 0 1px 10px rgba(0, 0, 0, 0.8);
+}
+
+.hero__dot {
   color: var(--color-primary);
 }
 
 .hero__role {
-  margin: 0.4rem 0 0;
+  display: block;
   font-size: clamp(1.9rem, 5.5vw, 3.4rem);
   font-weight: 400;
   font-style: italic;
@@ -86,6 +103,20 @@
   text-shadow: 0 1px 12px rgba(0, 0, 0, 0.8);
 }
 
+.hero .btn {
+  padding: 9px 18px;
+  border-radius: var(--radius-pill);
+  font-size: 0.88rem;
+}
+
+.hero .btn--ghost {
+  background: rgba(12, 11, 9, 0.55);
+}
+
+.hero__nowrap {
+  white-space: nowrap;
+}
+
 .hero__actions {
   margin-top: var(--space-8);
   display: flex;
@@ -95,10 +126,6 @@
 }
 
 @media (max-height: 800px) {
-  .hero__title {
-    font-size: clamp(2.5rem, 7vw, 4.5rem);
-  }
-
   .hero__role {
     font-size: clamp(1.3rem, 3.2vw, 2rem);
   }
@@ -111,60 +138,8 @@
   .hero__actions {
     margin-top: var(--space-4);
   }
-
-  .hero__stack {
-    margin-top: var(--space-4);
-  }
 }
 
-/* ---------- stack : simple rangée d'icônes, sans cadre ni défilement ---------- */
-.hero__stack {
-  margin-top: var(--space-8);
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: clamp(16px, 3vw, 30px);
+.hero + .section {
+  border-top: 0;
 }
-
-.hero__icon {
-  display: inline-flex;
-  animation: hero-icon-fly-in 700ms cubic-bezier(0.34, 1.56, 0.64, 1) both;
-  animation-play-state: paused;
-  will-change: transform, opacity;
-}
-
-/* attend la fin du rideau de chargement (cf. Loader.jsx) avant de s'envoler */
-body.is-loaded .hero__icon {
-  animation-play-state: running;
-}
-
-.hero__icon svg {
-  width: clamp(30px, 5vw, 44px);
-  height: clamp(30px, 5vw, 44px);
-  filter: grayscale(1) sepia(0.6) saturate(1.6) hue-rotate(-8deg) brightness(0.95)
-    drop-shadow(0 2px 10px rgba(0, 0, 0, 0.6));
-  opacity: 0.85;
-}
-
-/* arrivée décalée : chaque icône part d'un point dispersé et rejoint sa place.
-   Un seul segment (from/to) : appliquer la courbe d'accélération sur plusieurs
-   keyframes intermédiaires la relance à chaque étape et donne un mouvement saccadé. */
-@keyframes hero-icon-fly-in {
-  from {
-    transform: translate(var(--fly-x), var(--fly-y)) rotate(var(--fly-r)) scale(0.4);
-    opacity: 0;
-  }
-  to {
-    transform: translate(0, 0) rotate(0deg) scale(1);
-    opacity: 1;
-  }
-}
-
-.hero__icon:nth-child(1) { --fly-x: -170px; --fly-y: -75px; --fly-r: -35deg; animation-delay: 0ms; }
-.hero__icon:nth-child(2) { --fly-x: 125px; --fly-y: -115px; --fly-r: 50deg; animation-delay: 70ms; }
-.hero__icon:nth-child(3) { --fly-x: -95px; --fly-y: 105px; --fly-r: -60deg; animation-delay: 140ms; }
-.hero__icon:nth-child(4) { --fly-x: 175px; --fly-y: 60px; --fly-r: 40deg; animation-delay: 210ms; }
-.hero__icon:nth-child(5) { --fly-x: -155px; --fly-y: 20px; --fly-r: 70deg; animation-delay: 280ms; }
-.hero__icon:nth-child(6) { --fly-x: 60px; --fly-y: -145px; --fly-r: -45deg; animation-delay: 350ms; }
-.hero__icon:nth-child(7) { --fly-x: -45px; --fly-y: 130px; --fly-r: 55deg; animation-delay: 420ms; }
-.hero__icon:nth-child(8) { --fly-x: 145px; --fly-y: 90px; --fly-r: -50deg; animation-delay: 490ms; }

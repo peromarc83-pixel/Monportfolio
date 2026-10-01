@@ -1,9 +1,7 @@
-/* fond noir profond avec un très léger écho du dégradé du Hero, texte seul */
 .about {
-  background: var(--color-section);
+  background: #0f0f0f;
 }
 
-/* colonne de lecture centrée, comme le Hero */
 .about__inner {
   max-width: 720px;
   margin-inline: auto;
@@ -16,36 +14,29 @@
   margin-bottom: 0;
 }
 
-/* mobile : cadre photo au-dessus du texte */
 .about__layout {
   display: flex;
   flex-direction: column;
   gap: var(--space-6);
 }
 
-/* photo + signature, empilées et centrées ; largeur calée sur la photo */
 .about__portrait {
   align-self: center;
   width: 100%;
-  max-width: 220px;
+  max-width: 160px;
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: var(--space-6);
 }
 
-/* portrait : fond redessiné aux tons du site (quasi-noir + halo doré),
-   cadre rond cerné d'un liseré or */
 .about__photo {
   width: 100%;
   aspect-ratio: 1 / 1;
   overflow: hidden;
-  border: 3px solid var(--color-primary);
   border-radius: 50%;
   background: var(--color-bg);
-  box-shadow:
-    0 0 0 1px rgba(232, 196, 90, 0.25),
-    var(--shadow-card);
+  box-shadow: var(--shadow-card);
 }
 
 .about__photo img {
@@ -69,10 +60,9 @@
   max-width: 68rem;
 }
 
-/* au-delà de 900px : cadre photo à côté du texte */
 @media (min-width: 900px) {
   .about .container {
-    max-width: min(96vw, 1340px);
+    max-width: var(--container-max);
   }
 
   .about__layout {
@@ -84,7 +74,7 @@
   .about__portrait {
     flex: none;
     align-self: auto;
-    max-width: 260px;
+    max-width: 200px;
   }
 
   .about__content {
@@ -93,13 +83,11 @@
   }
 }
 
-/* mobile : taille de lecture standard */
 .about__body p {
   font-size: 1.1rem;
   line-height: 1.65;
 }
 
-/* au-delà de 640px : plus de largeur disponible, texte agrandi */
 @media (min-width: 641px) {
   .about__body p {
     font-size: 1.2rem;

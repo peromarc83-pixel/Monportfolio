@@ -45,11 +45,8 @@ function Navbar() {
   return (
     <header className="navbar">
       <nav className="navbar__inner container" aria-label="Navigation principale">
-        <a href="#accueil" className="navbar__logo" aria-label="Marc — retour à l'accueil">
-          <span className="navbar__logo-bracket" aria-hidden="true">&lt;</span>
-          <span className="navbar__logo-name">Marc</span>
-          <span className="navbar__logo-bracket" aria-hidden="true">/</span>
-          <span className="navbar__logo-bracket" aria-hidden="true">&gt;</span>
+        <a href="#accueil" className="navbar__logo" aria-label="Marc Pero, retour à l'accueil">
+          Marc Pero<span className="navbar__logo-dot" aria-hidden="true">.</span>
         </a>
 
         <ul

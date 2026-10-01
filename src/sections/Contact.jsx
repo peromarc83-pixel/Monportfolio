@@ -1,18 +1,19 @@
 import { useState } from 'react'
-import { Loader2, Mail, Send } from 'lucide-react'
-import { FaGithub, FaLinkedin } from 'react-icons/fa6'
+import { Loader2, Send } from 'lucide-react'
 import Button from '@/components/Button.jsx'
 import SectionTitle from '@/components/SectionTitle.jsx'
 import './Contact.css'
 
-const INITIAL_FORM = { name: '', email: '', message: '', company: '' } // "company" = honeypot
-const NAME_MAX_LENGTH = 200
+const INITIAL_FORM = { firstName: '', lastName: '', email: '', company: '', message: '', website: '' }
+const NAME_MAX_LENGTH = 100
 const EMAIL_MAX_LENGTH = 254
+const COMPANY_MAX_LENGTH = 200
 const MESSAGE_MAX_LENGTH = 5000
 
 function validate(form) {
   const errors = {}
-  if (!form.name.trim()) errors.name = 'Merci d\'indiquer votre nom.'
+  if (!form.firstName.trim()) errors.firstName = 'Merci d\'indiquer votre prénom.'
+  if (!form.lastName.trim()) errors.lastName = 'Merci d\'indiquer votre nom.'
   if (!form.email.trim()) {
     errors.email = 'Merci d\'indiquer votre e-mail.'
   } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(form.email)) {
@@ -22,12 +23,31 @@ function validate(form) {
   return errors
 }
 
+function Field({ id, label, required = false, error, wide = false, children }) {
+  return (
+    <div className={`contact__field${wide ? ' contact__field--wide' : ''}`}>
+      <label htmlFor={id}>
+        {label}
+        {required ? (
+          <span className="contact__star" aria-hidden="true"> *</span>
+        ) : (
+          <span className="contact__optional"> (facultatif)</span>
+        )}
+      </label>
+      {children}
+      {error && (
+        <p id={`${id}-error`} className="contact__error">
+          {error}
+        </p>
+      )}
+    </div>
+  )
+}
+
 function Contact() {
   const [form, setForm] = useState(INITIAL_FORM)
   const [errors, setErrors] = useState({})
-  const [status, setStatus] = useState('idle') // idle | sending | success | error
-  // Horodatage d'affichage du formulaire : envoyé au serveur pour détecter les
-  // soumissions trop rapides (typiques d'un bot), en complément du honeypot.
+  const [status, setStatus] = useState('idle')
   const [startedAt, setStartedAt] = useState(() => Date.now())
 
   const handleChange = (event) => {
@@ -35,11 +55,18 @@ function Contact() {
     setForm((prev) => ({ ...prev, [name]: value }))
   }
 
+  const fieldProps = (name) => ({
+    id: name,
+    name,
+    value: form[name],
+    onChange: handleChange,
+    'aria-invalid': Boolean(errors[name]),
+    'aria-describedby': errors[name] ? `${name}-error` : undefined,
+  })
+
   const handleSubmit = async (event) => {
     event.preventDefault()
-
-    // Honeypot : un bot remplit ce champ caché, un humain non
-    if (form.company) return
+    if (form.website) return
 
     const validationErrors = validate(form)
     setErrors(validationErrors)
@@ -51,8 +78,10 @@ function Contact() {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
-          name: form.name,
+          firstName: form.firstName,
+          lastName: form.lastName,
           email: form.email,
+          company: form.company,
           message: form.message,
           startedAt,
         }),
@@ -69,143 +98,101 @@ function Contact() {
   return (
     <section id="contact" className="contact section">
       <div className="container contact__inner">
-        <div className="contact__intro">
-          <SectionTitle
-            eyebrow="Contact"
-            subtitle="Une idée, une question, un projet ? Parlons-en — je réponds sous 48h."
-            id="contact-title"
-          />
-          <ul className="contact__socials">
-            <li>
-              <a href="mailto:marc.pero.dev@gmail.com" className="contact__email">
-                <Mail aria-hidden="true" size={18} />
-                marc.pero.dev@gmail.com
-              </a>
-            </li>
-            <li>
-              <a
-                href="https://www.linkedin.com/in/marc-pero-074580292/"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="contact__social contact__social--linkedin"
-              >
-                <FaLinkedin aria-hidden="true" size={18} />
-                LinkedIn
-              </a>
-            </li>
-            <li>
-              <a
-                href="https://github.com/peromarc83-pixel"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="contact__social contact__social--github"
-              >
-                <FaGithub aria-hidden="true" size={18} />
-                GitHub
-              </a>
-            </li>
-          </ul>
-        </div>
+        <SectionTitle
+          eyebrow="Contact"
+          subtitle="Parlez-moi de votre projet, je réponds sous 48 h."
+          id="contact-title"
+        />
 
         <form className="contact__form" onSubmit={handleSubmit} noValidate>
-          {/* Champ honeypot : masqué visuellement, ignoré des lecteurs d'écran, piège pour les bots */}
           <div className="contact__honeypot" aria-hidden="true">
-            <label htmlFor="company">Société</label>
+            <label htmlFor="website">Site web</label>
             <input
               type="text"
-              id="company"
-              name="company"
+              id="website"
+              name="website"
               tabIndex={-1}
               autoComplete="off"
-              value={form.company}
+              value={form.website}
               onChange={handleChange}
             />
           </div>
 
-          <p className="contact__required">Tous les champs sont obligatoires.</p>
+          <p className="contact__required">
+            Les champs marqués d&apos;un <span className="contact__star">*</span> sont obligatoires.
+          </p>
 
-          <div className="contact__field">
-            <label htmlFor="name">Nom</label>
+          <Field id="firstName" label="Prénom" required error={errors.firstName}>
             <input
               type="text"
-              id="name"
-              name="name"
               required
               maxLength={NAME_MAX_LENGTH}
-              autoComplete="name"
-              value={form.name}
-              onChange={handleChange}
-              aria-invalid={Boolean(errors.name)}
-              aria-describedby={errors.name ? 'name-error' : undefined}
+              autoComplete="given-name"
+              {...fieldProps('firstName')}
             />
-            {errors.name && (
-              <p id="name-error" className="contact__error">
-                {errors.name}
-              </p>
-            )}
-          </div>
+          </Field>
 
-          <div className="contact__field">
-            <label htmlFor="email">E-mail</label>
+          <Field id="lastName" label="Nom" required error={errors.lastName}>
+            <input
+              type="text"
+              required
+              maxLength={NAME_MAX_LENGTH}
+              autoComplete="family-name"
+              {...fieldProps('lastName')}
+            />
+          </Field>
+
+          <Field id="email" label="E-mail" required error={errors.email}>
             <input
               type="email"
-              id="email"
-              name="email"
               required
               maxLength={EMAIL_MAX_LENGTH}
               autoComplete="email"
-              value={form.email}
-              onChange={handleChange}
-              aria-invalid={Boolean(errors.email)}
-              aria-describedby={errors.email ? 'email-error' : undefined}
+              {...fieldProps('email')}
             />
-            {errors.email && (
-              <p id="email-error" className="contact__error">
-                {errors.email}
-              </p>
-            )}
-          </div>
+          </Field>
 
-          <div className="contact__field">
-            <label htmlFor="message">Message</label>
+          <Field id="company" label="Société">
+            <input
+              type="text"
+              maxLength={COMPANY_MAX_LENGTH}
+              autoComplete="organization"
+              {...fieldProps('company')}
+            />
+          </Field>
+
+          <Field id="message" label="Votre message" required error={errors.message} wide>
             <textarea
-              id="message"
-              name="message"
-              rows={5}
+              rows={6}
               required
               maxLength={MESSAGE_MAX_LENGTH}
               autoComplete="off"
-              value={form.message}
-              onChange={handleChange}
-              aria-invalid={Boolean(errors.message)}
-              aria-describedby={errors.message ? 'message-error' : undefined}
+              placeholder="Écrivez votre message ici."
+              {...fieldProps('message')}
             />
-            {errors.message && (
-              <p id="message-error" className="contact__error">
-                {errors.message}
-              </p>
-            )}
+          </Field>
+
+          <div className="contact__foot">
+            <Button type="submit" variant="gold" disabled={status === 'sending'}>
+              {status === 'sending' ? (
+                <Loader2 aria-hidden="true" size={18} className="contact__spinner" />
+              ) : (
+                <Send aria-hidden="true" size={18} />
+              )}
+              Envoyer
+            </Button>
+
+            <p className="contact__status" role="status" aria-live="polite">
+              {status === 'success' && 'Message envoyé, merci ! Je vous réponds rapidement.'}
+              {status === 'error' && "Une erreur est survenue, merci de réessayer ou de m'écrire directement."}
+            </p>
+
+            <p className="contact__consent">
+              En envoyant ce formulaire, vous acceptez que vos coordonnées soient utilisées
+              pour répondre à votre demande.{' '}
+              <a href="/confidentialite.html">En savoir plus</a>.
+            </p>
           </div>
-
-          <Button type="submit" variant="primary" disabled={status === 'sending'}>
-            {status === 'sending' ? (
-              <Loader2 aria-hidden="true" size={18} className="contact__spinner" />
-            ) : (
-              <Send aria-hidden="true" size={18} />
-            )}
-            Envoyer
-          </Button>
-
-          <p className="contact__status" role="status" aria-live="polite">
-            {status === 'success' && 'Message envoyé, merci ! Je vous réponds rapidement.'}
-            {status === 'error' && "Une erreur est survenue, merci de réessayer ou de m'écrire directement."}
-          </p>
-
-          <p className="contact__consent">
-            En envoyant ce formulaire, vous acceptez que vos coordonnées soient utilisées
-            pour répondre à votre demande.{' '}
-            <a href="/confidentialite.html">En savoir plus</a>.
-          </p>
         </form>
       </div>
     </section>

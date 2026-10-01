@@ -118,20 +118,13 @@ code {
 /* Utilitaires */
 .container {
   width: 100%;
-  max-width: 1120px;
+  max-width: var(--container-max);
   margin-inline: auto;
   padding-inline: var(--space-4);
 }
 
 .section {
-  /* chaque section occupe tout l'écran sous la navbar sticky (64px), contenu
-     centré verticalement : on ne voit jamais un bout de la section suivante */
-  min-height: calc(100vh - 64px);
-  min-height: calc(100svh - 64px);
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  padding-block: clamp(72px, 12vh, 150px);
+  padding-block: clamp(72px, 8vw, 112px);
   scroll-margin-top: 64px; /* hauteur de la navbar sticky : la section s'y colle pile */
 }
 
@@ -173,23 +166,8 @@ code {
   top: var(--space-4);
 }
 
-@media (min-width: 640px) {
-  .section {
-    padding-block: var(--space-8);
-  }
-}
-
 @media (min-width: 1024px) {
   .container {
     padding-inline: var(--space-8);
-  }
-}
-
-/* écran bas (ex. 1080p mis à l'échelle + chrome du navigateur) : le contenu de
-   certaines sections dépasse la hauteur dispo malgré min-height: 100vh — on
-   resserre les marges verticales pour que tout reste visible sans scroll interne */
-@media (max-height: 800px) {
-  .section {
-    padding-block: var(--space-4);
   }
 }

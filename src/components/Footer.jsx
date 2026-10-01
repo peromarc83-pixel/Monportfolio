@@ -42,7 +42,7 @@ function Footer() {
     <footer className="footer">
       <div className="container footer__inner">
         <div className="footer__meta">
-          <p className="footer__copy">© {year} Marc — Développeur web.</p>
+          <p className="footer__copy">© {year} Marc Pero, développeur front-end React</p>
           <nav className="footer__legal" aria-label="Informations légales">
             <a href={LEGAL_PAGES.mentions.url} onClick={(e) => openLegal(e, 'mentions')}>
               Mentions légales

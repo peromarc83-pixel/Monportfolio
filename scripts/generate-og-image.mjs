@@ -48,11 +48,11 @@ const svg = `
   </text>
 
   <text x="96" y="372" font-family="Arial, sans-serif" font-weight="600" font-size="38" fill="#5fb0dd">
-    Développeur front-end React, en formation full-stack
+    Développeur front-end React
   </text>
 
   <text x="96" y="424" font-family="Arial, sans-serif" font-weight="400" font-size="23" fill="#a6c1d6">
-    Des interfaces claires, accessibles et performantes, du prototype au déploiement.
+    Je conçois des sites et des applications web.
   </text>
 </svg>
 `;

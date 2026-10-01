@@ -11,9 +11,6 @@ function Skills() {
           subtitle="Surtout du front-end React, avec des bases côté back-end."
           id="competences-title"
         />
-        <p className="skills__hint">
-          Survolez ou touchez une technologie pour voir les projets qui l'utilisent.
-        </p>
         <SkillGroups />
       </div>
     </section>

@@ -1,7 +1,19 @@
 .footer {
+  position: relative;
   background-color: var(--color-section);
-  border-top: 1px solid var(--color-line);
   padding-block: var(--space-6);
+}
+
+.footer::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 50%;
+  width: calc(100% - 2 * var(--space-4));
+  max-width: calc(var(--container-max) - 2 * var(--space-8));
+  height: 1px;
+  background: var(--color-line);
+  transform: translateX(-50%);
 }
 
 .footer__inner {
@@ -47,7 +59,6 @@
   gap: var(--space-4);
 }
 
-/* icônes en petit badge, même dégradé que la bille du logo et des sphères */
 .footer__socials a {
   display: inline-flex;
   align-items: center;

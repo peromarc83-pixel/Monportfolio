@@ -11,7 +11,7 @@
 import { stat } from "node:fs/promises";
 import sharp from "sharp";
 
-const SRC = "assets/portrait/marc.png";
+const SRC = "assets/portrait/marc-mat.png";
 const OUT = "public/images/marc-portrait.webp";
 const TARGET_WIDTH = 600;
 

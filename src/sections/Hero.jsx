@@ -1,39 +1,37 @@
 import { FaGithub } from 'react-icons/fa6'
 import { Download } from 'lucide-react'
 import Button from '@/components/Button.jsx'
-import { TECHS } from '@/data/techIcons.jsx'
 import './Hero.css'
-
-/**
- * Hero du site. La stack technique est affichée en une simple rangée d'icônes
- * sous le contenu. Pour ajouter/retirer une techno : cf. src/data/techIcons.jsx.
- */
 
 function Hero() {
   return (
     <section id="accueil" className="hero section">
       <img
-        className="hero__bg"
-        src="/images/hero-circuit.webp"
-        srcSet="/images/hero-circuit-1280.webp 1280w, /images/hero-circuit.webp 1920w"
+        className="hero__photo"
+        src="/images/hero-bg-1920.webp"
+        srcSet="/images/hero-bg-1280.webp 1280w, /images/hero-bg-1920.webp 1920w, /images/hero-bg-2560.webp 2560w, /images/hero-bg-3840.webp 3840w"
         sizes="100vw"
+        width="1920"
+        height="875"
         fetchPriority="high"
         alt=""
         aria-hidden="true"
       />
-      <div className="hero__veil" aria-hidden="true"></div>
-
+      <span className="hero__veil" aria-hidden="true"></span>
       <div className="container hero__inner">
         <div className="hero__text">
           <h1 className="hero__title">
-            Marc<span className="hero__title-dot">.</span>
-            <span className="sr-only"> — Développeur front-end React, en formation full-stack</span>
+            <span className="hero__name">
+              Marc Pero<span className="hero__dot" aria-hidden="true">.</span>
+            </span>{' '}
+            <span className="hero__role">
+              Développeur front-end <em>React</em>
+            </span>
           </h1>
-          <h2 className="hero__role">
-            Développeur front-end <em>React</em>
-          </h2>
           <p className="hero__tagline">
-          Développeur web spécialisé en front-end, je conçois des interfaces avec React et possède des bases en back-end qui me permettent de participer à un projet jusqu’à sa mise en ligne. Je cherche à créer des interfaces claires, accessibles et performantes.
+            Je conçois des sites et des applications.
+            <br />
+            Ma formation m’a aussi donné des bases en <span className="hero__nowrap">back-end</span> et en déploiement.
           </p>
           <div className="hero__actions">
             <Button href="#contact" variant="gold">
@@ -49,20 +47,9 @@ function Hero() {
               <span className="sr-only"> (PDF, 180 Ko)</span>
             </Button>
           </div>
-
-          <p className="sr-only">
-            Stack&nbsp;: {TECHS.map((tech) => tech.name).join(', ')}.
-          </p>
-
-          <div className="hero__stack" aria-hidden="true">
-            {TECHS.map((tech) => (
-              <span className="hero__icon" key={tech.name} title={tech.name}>
-                <tech.Icon />
-              </span>
-            ))}
-          </div>
         </div>
       </div>
+      <span className="hero__rule" aria-hidden="true"></span>
     </section>
   )
 }

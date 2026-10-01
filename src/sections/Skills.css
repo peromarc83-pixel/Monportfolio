@@ -1,22 +1,12 @@
-/* fond dégradé doré (identique aux autres sections sans photo) */
 .skills {
-  background: var(--color-section);
+  background: linear-gradient(180deg, #313131 0%, #1f1f1f 45%, #181818 100%);
+  background-attachment: fixed;
+}
+
+.skills .section-title {
+  margin-bottom: var(--space-2);
 }
 
 .skills .section-title__subtitle {
   font-size: 1.2rem;
-}
-
-/* conteneur élargi pour garder les 4 domaines sur une ligne */
-@media (min-width: 1024px) {
-  .skills .container {
-    max-width: 1320px;
-  }
-}
-
-.skills__hint {
-  margin: 0;
-  font-size: 0.88rem;
-  font-style: italic;
-  color: var(--color-ink-soft);
 }

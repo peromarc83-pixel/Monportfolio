@@ -40,11 +40,16 @@ function isRateLimited(ip) {
   return timestamps.length > RATE_LIMIT_MAX
 }
 
+function isRequiredText(value, maxLength) {
+  return typeof value === 'string' && value.trim().length > 0 && value.length <= maxLength
+}
+
 function isValidPayload(body) {
   return (
-    typeof body?.name === 'string' &&
-    body.name.trim().length > 0 &&
-    body.name.length <= 200 &&
+    isRequiredText(body?.firstName, 100) &&
+    isRequiredText(body?.lastName, 100) &&
+    (body?.company === undefined ||
+      (typeof body.company === 'string' && body.company.length <= 200)) &&
     typeof body?.email === 'string' &&
     EMAIL_RE.test(body.email) &&
     typeof body?.message === 'string' &&
@@ -92,9 +97,9 @@ export default async (request) => {
     })
   }
 
-  // Le champ honeypot ("company") ne doit jamais être présent côté serveur non plus :
+  // Le champ honeypot ("website") ne doit jamais être présent côté serveur non plus :
   // s'il est rempli, on répond succès sans rien envoyer, pour ne pas renseigner le bot.
-  if (body.company) {
+  if (body.website) {
     return new Response(JSON.stringify({ ok: true }), {
       status: 200,
       headers: { 'Content-Type': 'application/json' },
@@ -118,7 +123,9 @@ export default async (request) => {
     })
   }
 
-  const { name, email, message } = body
+  const { firstName, lastName, email, message } = body
+  const name = `${firstName.trim()} ${lastName.trim()}`
+  const company = body.company?.trim() || '-'
 
   // SMTP_USER/CONTACT_TO sont le compte Gmail utilisé pour le transport de
   // l'e-mail (même adresse que celle affichée sur le site).
@@ -138,8 +145,8 @@ export default async (request) => {
       to: process.env.CONTACT_TO || process.env.SMTP_USER,
       replyTo: email,
       subject: `[Portfolio] Nouveau message de ${name}`,
-      text: `Nom : ${name}\nE-mail : ${email}\n\n${message}`,
-      html: `<p><strong>Nom :</strong> ${escapeHtml(name)}</p><p><strong>E-mail :</strong> ${escapeHtml(email)}</p><p>${escapeHtml(message).replace(/\n/g, '<br>')}</p>`,
+      text: `Nom : ${name}\nE-mail : ${email}\nSociété : ${company}\n\n${message}`,
+      html: `<p><strong>Nom :</strong> ${escapeHtml(name)}</p><p><strong>E-mail :</strong> ${escapeHtml(email)}</p><p><strong>Société :</strong> ${escapeHtml(company)}</p><p>${escapeHtml(message).replace(/\n/g, '<br>')}</p>`,
     })
   } catch (error) {
     console.error('Échec de l\'envoi du mail de contact', error)

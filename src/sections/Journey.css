@@ -1,18 +1,11 @@
-/* fond dégradé doré (identique à Contact) ; timeline sans panneau,
-   dans une colonne de lecture centrée comme le Hero. */
 .journey {
-  background: var(--color-section);
+  background: #141414;
 }
 
 .journey .container {
   max-width: 720px;
 }
 
-.journey__rail {
-  position: relative;
-}
-
-/* points reliés par une ligne, un par étape : visibles seulement en rail horizontal */
 .journey__dots {
   display: none;
 }
@@ -22,11 +15,9 @@
   flex-direction: column;
 }
 
-/* au-delà de 1024px, le container s'élargit et la liste devient un rail
-   horizontal à 3 colonnes (nombre d'étapes fixe) relié par une ligne de points */
 @media (min-width: 1024px) {
   .journey .container {
-    max-width: 1320px;
+    max-width: var(--container-max);
   }
 
   .journey__dots {
@@ -48,12 +39,12 @@
   }
 
   .journey__dot {
-    justify-self: start;
+    position: relative;
     width: 14px;
     height: 14px;
     border-radius: 50%;
-    background: var(--dot, var(--color-primary));
-    box-shadow: 0 0 0 5px var(--color-section);
+    background: var(--color-primary);
+    box-shadow: 0 0 0 5px #141414;
   }
 
   .journey__list {

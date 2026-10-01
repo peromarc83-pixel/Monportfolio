@@ -24,16 +24,11 @@ function About() {
           <div className="about__content">
             <div className="about__body">
               <p>
-                Je m’appelle Marc Pero.J’ai passé plusieurs années dans l’assurance, à analyser des dossiers et à
-                évaluer des risques. Puis j’ai eu envie de me reconvertir dans le développement
-                web. J’ai gardé de cette expérience le réflexe de bien comprendre un besoin
-                avant d’agir.
+               Avant le développement web, j’ai travaillé 31 ans dans l’assurance, dont 14 ans comme directeur d’agence. J’y ai appris à analyser une situation et à clarifier un besoin avant de décider. Aujourd’hui, je retrouve cette démarche dans les projets web.
               </p>
               <p>
-                Ce qui me plaît dans le développement, c’est la diversité des missions :
-                travailler sur le design d’un site, améliorer ses performances ou sa
-                visibilité. Mais j’aime particulièrement construire des produits utiles et
-                agréables à utiliser.
+                Ce qui me plaît dans le développement, c’est la variété du travail : on passe de la
+                compréhension d’une demande à l’optimisation d’une page, parfois dans la même journée.
               </p>
             </div>
           </div>
