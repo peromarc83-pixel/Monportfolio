@@ -2,8 +2,14 @@ export const projects = [
   {
     id: "cordees",
     title: "Les Cordées du Leadership",
+    type: "client",
     summary:
-      "Site vitrine de Nicolas Stoeckel, Mentor d'affaires qui aide des dirigeants à gravir les décisions qu'ils ne peuvent plus prendre seuls et à tenir la trajectoire correspondante. Projet client mené de bout en bout : refonte d'une page HTML statique en application React/Vite, déploiement sur Netlify avec domaine dédié, sécurisation du site et mise en conformité RGPD.",
+      "Il s’agit du site vitrine d’un mentor d’affaires qui accompagne les dirigeants lorsqu’ils doivent prendre des décisions difficiles à gérer seuls. Le projet est parti d’une page HTML statique que j’ai transformée en application React. J’ai ensuite déployé le site sur Netlify, relié un nom de domaine dédié chez OVH, puis travaillé sur sa sécurisation et sa conformité réglementaire.",
+    context: [
+      { label: "Client", value: "Nicolas Stoeckel, mentor d'affaires" },
+      { label: "Rôle", value: "de la conception à la mise en ligne" },
+      { label: "En ligne", value: "lescordees.pro" },
+    ],
     stack: ["React", "Vite", "SCSS", "Node", "Netlify", "OVH"],
     image: "/images/cordees.webp",
     links: { demo: "https://lescordees.pro", code: "" },
@@ -11,8 +17,9 @@ export const projects = [
   {
     id: "argentbank",
     title: "ArgentBank",
+    type: "formation",
     summary:
-      "Application web bancaire avec espace client sécurisé : connexion, consultation des comptes et édition du profil. Développée en React et Redux Toolkit, avec authentification par token JWT. Conception et documentation de l'API des transactions en Swagger.",
+      "ArgentBank est une application bancaire qui propose un espace client avec authentification, consultation des comptes et modification du profil. Je l’ai développée avec React et Redux Toolkit, en utilisant des jetons JWT pour l’authentification. Le projet comprenait aussi la conception et la documentation avec Swagger de l’API dédiée aux transactions.",
     stack: ["React", "Redux Toolkit", "React Router", "Express", "MongoDB", "JWT"],
     image: "/images/argentbank.webp",
     links: {
@@ -23,8 +30,9 @@ export const projects = [
   {
     id: "nina-carducci",
     title: "Nina Carducci",
+    type: "formation",
     summary:
-      "Site vitrine d'une photographe — portraits, mariages, concerts. Mission : optimiser un site existant sans en modifier le design. Audit puis corrections du référencement (SEO), de l'accessibilité (normes WCAG) et de la performance (Lighthouse), avec débogage du code JavaScript.",
+      "Nina Carducci est le site vitrine d’une photographe spécialisée dans les portraits, les mariages et les événements, notamment les concerts. Ma mission consistait à optimiser le site existant sans en modifier le design. J’ai commencé par un audit, puis corrigé des problèmes de référencement (SEO) et d’accessibilité, amélioré les performances mesurées avec Lighthouse et débogué le code JavaScript.",
     stack: ["JavaScript", "Schema.org", "WebP", "Lighthouse"],
     metrics: [
       { value: "99", label: "Perf" },

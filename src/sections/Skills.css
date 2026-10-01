@@ -13,3 +13,10 @@
     max-width: 1320px;
   }
 }
+
+.skills__hint {
+  margin: 0;
+  font-size: 0.88rem;
+  font-style: italic;
+  color: var(--color-ink-soft);
+}

@@ -20,13 +20,6 @@
   margin-bottom: var(--space-1);
 }
 
-.timeline-item__version {
-  font-family: var(--font-mono);
-  font-weight: 700;
-  font-size: 0.95rem;
-  color: var(--hue, var(--color-primary));
-}
-
 .timeline-item__badge {
   font-size: 0.75rem;
   font-weight: 500;
@@ -43,11 +36,6 @@
   color: var(--color-ink-soft);
 }
 
-.timeline-item__year::before {
-  content: '· ';
-  color: #847f72;
-}
-
 .timeline-item__title {
   margin-bottom: var(--space-1);
 }
@@ -62,10 +50,6 @@
   .timeline-item {
     padding: 0;
     border-bottom: none;
-  }
-
-  .timeline-item__version {
-    font-size: 1.15rem;
   }
 
   .timeline-item__year {

@@ -5,7 +5,7 @@ function About() {
   return (
     <section id="a-propos" className="about section">
       <div className="container about__inner">
-        <SectionTitle eyebrow="À propos" title="Qui suis-je ?" id="a-propos-title" />
+        <SectionTitle eyebrow="À propos" id="a-propos-title" />
 
         <div className="about__layout">
           <div className="about__portrait">
@@ -19,22 +19,21 @@ function About() {
                 decoding="async"
               />
             </div>
-            <p className="about__signature" aria-hidden="true">Marc Pero</p>
           </div>
 
           <div className="about__content">
             <div className="about__body">
               <p>
-                J’ai passé plusieurs années dans l’assurance, à analyser des dossiers et
-                évaluer des risques, avant de me reconvertir dans le développement web. J’en
-                garde le réflexe de bien comprendre un problème avant de coder, au service
-                d’interfaces claires et accessibles.
+                Je m’appelle Marc Pero.J’ai passé plusieurs années dans l’assurance, à analyser des dossiers et à
+                évaluer des risques. Puis j’ai eu envie de me reconvertir dans le développement
+                web. J’ai gardé de cette expérience le réflexe de bien comprendre un besoin
+                avant d’agir.
               </p>
               <p>
-                Ce qui me plaît dans le développement, c’est justement cette diversité : une
-                animation CSS un jour, une API à optimiser le lendemain, un score Lighthouse à
-                améliorer la semaine suivante. Le fil conducteur reste le même — construire des
-                produits bien pensés, utiles, prêts pour de vrais utilisateurs.
+                Ce qui me plaît dans le développement, c’est la diversité des missions :
+                travailler sur le design d’un site, améliorer ses performances ou sa
+                visibilité. Mais j’aime particulièrement construire des produits utiles et
+                agréables à utiliser.
               </p>
             </div>
           </div>

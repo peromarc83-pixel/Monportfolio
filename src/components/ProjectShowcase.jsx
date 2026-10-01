@@ -4,7 +4,7 @@ import { FaGithub } from 'react-icons/fa6'
 import Button from '@/components/Button.jsx'
 import './ProjectShowcase.css'
 
-function CardImage({ image, title }) {
+function CardImage({ image, title, sizes }) {
   const [error, setError] = useState(false)
   if (error || !image) {
     return (
@@ -18,7 +18,7 @@ function CardImage({ image, title }) {
       className="project-card__shot"
       src={image}
       srcSet={`${image.replace('.webp', '-800.webp')} 800w, ${image} 1600w`}
-      sizes="(min-width: 901px) 340px, (min-width: 600px) 50vw, 100vw"
+      sizes={sizes}
       alt=""
       aria-hidden="true"
       loading="lazy"
@@ -27,15 +27,46 @@ function CardImage({ image, title }) {
   )
 }
 
-function ProjectShowcase({ projects }) {
+const SIZES = {
+  featured: '(min-width: 860px) 55vw, 100vw',
+  grid: '(min-width: 600px) 50vw, 100vw',
+}
+
+function ProjectShowcase({ projects, featured = false, labelledBy }) {
   return (
-    <ul className="project-grid">
+    <ul
+      className={`project-grid${featured ? ' project-grid--featured' : ''}`}
+      aria-labelledby={labelledBy}
+    >
       {projects.map((project) => (
-        <li key={project.id} className="project-card">
-          <CardImage image={project.image} title={project.title} />
+        <li
+          key={project.id}
+          id={`projet-${project.id}`}
+          className={`project-card${featured ? ' project-card--featured' : ''}`}
+        >
+          <CardImage
+            image={project.image}
+            title={project.title}
+            sizes={featured ? SIZES.featured : SIZES.grid}
+          />
 
           <div className="project-card__body">
-            <h3 className="project-card__title">{project.title}</h3>
+            {project.type === 'client' && (
+              <span className="project-card__badge">Projet client</span>
+            )}
+            <h4 className="project-card__title">{project.title}</h4>
+
+            {project.context?.length > 0 && (
+              <dl className="project-card__context">
+                {project.context.map((item) => (
+                  <div key={item.label}>
+                    <dt>{item.label}</dt>
+                    <dd>{item.value}</dd>
+                  </div>
+                ))}
+              </dl>
+            )}
+
             <p className="project-card__summary">{project.summary}</p>
 
             <div className="project-card__tech">

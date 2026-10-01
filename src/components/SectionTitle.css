@@ -8,7 +8,7 @@
   align-items: center;
   gap: var(--space-3);
   font-family: var(--font-display);
-  font-size: 1.05rem;
+  font-size: clamp(1.75rem, 3.5vw, 2.4rem);
   font-style: italic;
   font-weight: 400;
   color: var(--color-primary);
@@ -17,13 +17,9 @@
 
 .section-title__eyebrow::before {
   content: '';
-  width: 28px;
+  width: clamp(28px, 3vw, 44px);
   height: 1px;
   background: var(--color-primary);
-}
-
-.section-title__title {
-  margin-bottom: var(--space-2);
 }
 
 .section-title__subtitle {

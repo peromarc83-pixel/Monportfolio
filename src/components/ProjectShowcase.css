@@ -5,14 +5,13 @@
   margin: 0;
   padding: 0;
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  grid-template-columns: 1fr;
   gap: clamp(1.5rem, 4vw, 3rem);
 }
 
-/* au-delà de 900px : 3 colonnes fixes */
-@media (min-width: 901px) {
-  .project-grid {
-    grid-template-columns: repeat(3, 1fr);
+@media (min-width: 600px) {
+  .project-grid:not(.project-grid--featured) {
+    grid-template-columns: repeat(2, 1fr);
   }
 }
 
@@ -23,6 +22,34 @@
   border: 1px solid var(--color-line);
   border-radius: var(--radius-card);
   overflow: hidden;
+  scroll-margin-top: 80px;
+}
+
+.project-card--featured {
+  border-color: rgba(232, 196, 90, 0.45);
+  background: linear-gradient(160deg, rgba(232, 196, 90, 0.09), rgba(232, 196, 90, 0.01) 60%);
+}
+
+@media (min-width: 860px) {
+  .project-card--featured {
+    display: grid;
+    grid-template-columns: 1.15fr 1fr;
+  }
+
+  .project-card--featured .project-card__shot {
+    height: 100%;
+    aspect-ratio: auto;
+    border-bottom: 0;
+    border-right: 1px solid var(--color-line);
+  }
+
+  .project-card--featured .project-card__body {
+    padding: clamp(var(--space-4), 2.5vw, var(--space-8));
+  }
+
+  .project-card--featured .project-card__title {
+    font-size: 1.5rem;
+  }
 }
 
 .project-card__shot {
@@ -57,7 +84,64 @@
 
 .project-card__title {
   margin: 0;
+  font-family: var(--font-display);
+  font-optical-sizing: auto;
   font-size: 1.05rem;
+  font-weight: 500;
+  line-height: 1.15;
+  letter-spacing: -0.015em;
+  color: var(--color-ink);
+  text-wrap: balance;
+}
+
+.project-card__badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  align-self: flex-start;
+  padding: 0.25rem 0.65rem;
+  border-radius: var(--radius-pill);
+  background: var(--color-primary);
+  color: var(--color-bg);
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.project-card__badge::before {
+  content: '';
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: currentColor;
+}
+
+.project-card__context {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-1) var(--space-4);
+  margin: 0;
+  font-size: 0.82rem;
+}
+
+.project-card__context div {
+  display: flex;
+  gap: 0.35rem;
+}
+
+.project-card__context dt {
+  color: var(--color-ink-soft);
+}
+
+.project-card__context dt::after {
+  content: ' :';
+}
+
+.project-card__context dd {
+  margin: 0;
+  color: var(--color-ink);
+  font-weight: 500;
 }
 
 /* résumé : contenu et objet du site + méthode de la mission */

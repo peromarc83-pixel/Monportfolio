@@ -72,7 +72,6 @@ function Contact() {
         <div className="contact__intro">
           <SectionTitle
             eyebrow="Contact"
-            title="Donnons vie à votre projet, ensemble !"
             subtitle="Une idée, une question, un projet ? Parlons-en — je réponds sous 48h."
             id="contact-title"
           />

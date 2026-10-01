@@ -33,7 +33,7 @@ function Hero() {
             Développeur front-end <em>React</em>
           </h2>
           <p className="hero__tagline">
-          Développeur web orienté front-end, avec des bases solides en back-end qui me permettent de mener un projet du prototype à la mise en ligne. Mon objectif : des interfaces claires, accessibles et performantes.
+          Développeur web spécialisé en front-end, je conçois des interfaces avec React et possède des bases en back-end qui me permettent de participer à un projet jusqu’à sa mise en ligne. Je cherche à créer des interfaces claires, accessibles et performantes.
           </p>
           <div className="hero__actions">
             <Button href="#contact" variant="gold">
