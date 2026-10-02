@@ -18,7 +18,7 @@ function Hero() {
         <img
           className="hero__photo"
           src="/images/hero-keyboard-mobile-1080.webp"
-          srcSet="/images/hero-keyboard-mobile-720.webp 720w, /images/hero-keyboard-mobile-1080.webp 1080w, /images/hero-keyboard-mobile-1440.webp 1440w"
+          srcSet="/images/hero-keyboard-mobile-720.webp 720w, /images/hero-keyboard-mobile-900.webp 900w, /images/hero-keyboard-mobile-1080.webp 1080w, /images/hero-keyboard-mobile-1440.webp 1440w"
           sizes="100vw"
           width="1440"
           height="2200"
