@@ -12,13 +12,14 @@ import { stat } from "node:fs/promises";
 import sharp from "sharp";
 
 const SRC = "assets/portrait/marc-chemise.png";
-const OUT = "public/images/marc-portrait.webp";
-const TARGET_WIDTH = 600;
+const VARIANTS = [
+  { width: 600, out: "public/images/marc-portrait.webp" },
+  { width: 400, out: "public/images/marc-portrait-400.webp" },
+  { width: 240, out: "public/images/marc-portrait-240.webp" },
+];
 
-await sharp(SRC)
-  .resize({ width: TARGET_WIDTH })
-  .webp({ quality: 82 })
-  .toFile(OUT);
-
-const { size } = await stat(OUT);
-console.log(`✓ ${OUT} (largeur ${TARGET_WIDTH}px, ${Math.round(size / 1024)} Ko)`);
+for (const { width, out } of VARIANTS) {
+  await sharp(SRC).resize({ width }).webp({ quality: 82 }).toFile(out);
+  const { size } = await stat(out);
+  console.log(`✓ ${out} (largeur ${width}px, ${Math.round(size / 1024)} Ko)`);
+}

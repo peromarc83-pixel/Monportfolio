@@ -134,6 +134,55 @@
   }
 }
 
+@media (min-width: 1024px) {
+  .hero__text {
+    max-width: 960px;
+  }
+
+  .hero__name {
+    font-size: 2.6rem;
+  }
+
+  .hero__role {
+    font-size: clamp(3.4rem, 5vw, 4.4rem);
+  }
+
+  .hero__tagline {
+    margin-top: 1.75rem;
+    max-width: 36ch;
+    font-size: 1.65rem;
+  }
+
+  .hero__actions {
+    margin-top: 40px;
+    gap: 14px;
+  }
+
+  .hero .btn {
+    padding: 12px 24px;
+    font-size: 1rem;
+  }
+}
+
+@media (min-width: 1024px) and (max-height: 800px) {
+  .hero__name {
+    font-size: 2.25rem;
+  }
+
+  .hero__role {
+    font-size: clamp(3rem, 4vw, 3.6rem);
+  }
+
+  .hero__tagline {
+    margin-top: 1.25rem;
+    font-size: 1.4rem;
+  }
+
+  .hero__actions {
+    margin-top: 28px;
+  }
+}
+
 .hero + .section {
   border-top: 0;
 }

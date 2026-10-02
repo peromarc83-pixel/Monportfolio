@@ -9,6 +9,14 @@ const LEGAL_PAGES = {
   confidentialite: { title: 'Politique de confidentialité', url: '/confidentialite.html' },
 }
 
+function loadLegalStyles() {
+  if (document.querySelector('link[href="/legal.css"]')) return
+  const link = document.createElement('link')
+  link.rel = 'stylesheet'
+  link.href = '/legal.css'
+  document.head.append(link)
+}
+
 // Récupère la page légale statique et n'en garde que le contenu utile : sans le
 // lien "Retour au portfolio" (redondant avec le bouton de fermeture de la
 // modale) ni le petit pied de page (redondant avec le vrai footer du site).
@@ -29,6 +37,7 @@ function Footer() {
   const openLegal = async (event, key) => {
     event.preventDefault()
     const { title, url } = LEGAL_PAGES[key]
+    loadLegalStyles()
     setLegal({ title, url, html: null })
     try {
       const html = await fetchLegalContent(url)

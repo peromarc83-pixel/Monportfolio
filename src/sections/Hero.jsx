@@ -10,7 +10,7 @@ function Hero() {
         <source
           media="(min-width: 768px)"
           type="image/webp"
-          srcSet="/images/hero-keyboard-desktop-1920.webp 1920w, /images/hero-keyboard-desktop-2560.webp 2560w, /images/hero-keyboard-desktop-3840.webp 3840w"
+          srcSet="/images/hero-keyboard-desktop-1440.webp 1440w, /images/hero-keyboard-desktop-1920.webp 1920w, /images/hero-keyboard-desktop-2560.webp 2560w, /images/hero-keyboard-desktop-3840.webp 3840w"
           sizes="100vw"
           width="3840"
           height="2160"

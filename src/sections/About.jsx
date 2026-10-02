@@ -12,6 +12,8 @@ function About() {
             <div className="about__photo">
               <img
                 src="/images/marc-portrait.webp"
+                srcSet="/images/marc-portrait-240.webp 240w, /images/marc-portrait-400.webp 400w, /images/marc-portrait.webp 600w"
+                sizes="(min-width: 900px) 200px, 160px"
                 width="600"
                 height="600"
                 alt="Portrait de Marc Pero"

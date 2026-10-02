@@ -24,7 +24,10 @@ function Shot({ image, title, className, sizes, lazy = false, alt = '' }) {
     <img
       className={className}
       src={image}
-      srcSet={`${image.replace('.webp', '-800.webp')} 800w, ${image} 1600w`}
+      srcSet={['400', '800', '1200']
+        .map((w) => `${image.replace('.webp', `-${w}.webp`)} ${w}w`)
+        .concat(`${image} 1600w`)
+        .join(', ')}
       sizes={sizes}
       alt={alt}
       loading={lazy ? 'lazy' : undefined}
