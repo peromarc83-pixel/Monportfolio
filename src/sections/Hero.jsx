@@ -6,17 +6,27 @@ import './Hero.css'
 function Hero() {
   return (
     <section id="accueil" className="hero section">
-      <img
-        className="hero__photo"
-        src="/images/hero-bg-1920.webp"
-        srcSet="/images/hero-bg-1280.webp 1280w, /images/hero-bg-1920.webp 1920w, /images/hero-bg-2560.webp 2560w, /images/hero-bg-3840.webp 3840w"
-        sizes="100vw"
-        width="1920"
-        height="875"
-        fetchPriority="high"
-        alt=""
-        aria-hidden="true"
-      />
+      <picture>
+        <source
+          media="(min-width: 768px)"
+          type="image/webp"
+          srcSet="/images/hero-keyboard-desktop-1920.webp 1920w, /images/hero-keyboard-desktop-2560.webp 2560w, /images/hero-keyboard-desktop-3840.webp 3840w"
+          sizes="100vw"
+          width="3840"
+          height="2160"
+        />
+        <img
+          className="hero__photo"
+          src="/images/hero-keyboard-mobile-1080.webp"
+          srcSet="/images/hero-keyboard-mobile-720.webp 720w, /images/hero-keyboard-mobile-1080.webp 1080w, /images/hero-keyboard-mobile-1440.webp 1440w"
+          sizes="100vw"
+          width="1440"
+          height="2200"
+          fetchPriority="high"
+          alt=""
+          aria-hidden="true"
+        />
+      </picture>
       <span className="hero__veil" aria-hidden="true"></span>
       <div className="container hero__inner">
         <div className="hero__text">
@@ -31,7 +41,7 @@ function Hero() {
           <p className="hero__tagline">
             Je conçois des sites et des applications.
             <br />
-            Ma formation m’a aussi donné des bases en <span className="hero__nowrap">back-end</span> et en déploiement.
+            Ma formation m’a aussi permis de découvrir les bases du <span className="hero__nowrap">back-end</span> et de la mise en ligne.
           </p>
           <div className="hero__actions">
             <Button href="#contact" variant="gold">
